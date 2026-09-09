@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { BackLink } from "@/components/BackLink";
+import { WorkshopHeader } from "@/components/WorkshopHeader";
 import { WorkshopNav } from "@/components/WorkshopNav";
-import { PageKicker } from "@/components/ui";
+import { WORKSHOP_LABS } from "@/lib/workshop-labs";
 
 const ZONES = [
   ["A", "Market: KPI row and Signals"],
@@ -46,16 +46,11 @@ const MCP_JSON = `{
 }`;
 
 export default function WorkshopPage() {
+  const lab = WORKSHOP_LABS["lab-1"];
+
   return (
     <article className="mx-auto max-w-3xl space-y-8">
-      <header className="space-y-3">
-        <BackLink href="/">Back to market</BackLink>
-        <PageKicker>Workshop</PageKicker>
-        <h1 className="page-title">Lab 1 and setup</h1>
-        <p className="text-[var(--muted)]">
-          You do not need the GitHub repo for this page. Use the live site, Cursor, and the RAW board.
-        </p>
-      </header>
+      <WorkshopHeader title={lab.title} lede={lab.lede} />
 
       <WorkshopNav />
 
