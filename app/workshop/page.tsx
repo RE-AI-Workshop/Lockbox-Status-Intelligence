@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BackLink } from "@/components/BackLink";
+import { WorkshopNav } from "@/components/WorkshopNav";
 import { PageKicker } from "@/components/ui";
 
 const ZONES = [
@@ -55,6 +56,8 @@ export default function WorkshopPage() {
           You do not need the GitHub repo for this page. Use the live site, Cursor, and the RAW board.
         </p>
       </header>
+
+      <WorkshopNav />
 
       <section className="panel space-y-3 p-6 text-sm leading-relaxed">
         <h2 className="section-title">Links</h2>

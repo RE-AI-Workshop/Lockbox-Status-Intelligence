@@ -8,7 +8,7 @@ Set the Cursor chat to **Agent**, not Plan, not Ask.
 
 ## Links
 
-- Throughline app: https://<THROUGHLINE_URL>
+- Throughline app: https://lockbox-status-intelligence.vercel.app
 - RAW board: https://dconroy.atlassian.net/jira/software/projects/RAW/boards/3
 - Create an Atlassian API token: https://id.atlassian.com/manage-profile/security/api-tokens
 - Token help: https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/

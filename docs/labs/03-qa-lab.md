@@ -10,6 +10,8 @@ Everyone writes a Playwright spec. Formula tickets also write a Vitest file firs
 
 ## Links
 
+- This lab: https://lockbox-status-intelligence.vercel.app/workshop/lab-3
+- Lab 2 (same ticket): https://lockbox-status-intelligence.vercel.app/workshop/lab-2
 - Repo: https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence
 - RAW board: https://dconroy.atlassian.net/jira/software/projects/RAW/boards/3
 

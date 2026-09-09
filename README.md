@@ -13,7 +13,7 @@ Workshop sheets: [docs/labs/README.md](docs/labs/README.md).
 
 ## Live app
 
-https://<THROUGHLINE_URL>
+https://lockbox-status-intelligence.vercel.app
 
 ## Stack
 
@@ -67,7 +67,7 @@ A human connects this repo in the Vercel dashboard. Before the first push, run t
 
 Summary for Vercel: push to GitHub first, then import the repo. **Next.js**, root `.`, build `npm run build`, output directory empty (default), Node **20**, no environment variables. No `vercel.json` required.
 
-After deploy, replace `https://<THROUGHLINE_URL>` above and in the lab docs listed in [docs/deploy-vercel.md](docs/deploy-vercel.md).
+**Production:** https://lockbox-status-intelligence.vercel.app (lab docs and README use this URL).
 
 ## Jira MCP
 

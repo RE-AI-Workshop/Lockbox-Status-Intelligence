@@ -47,17 +47,21 @@ When they import the repo in Vercel:
 - [ ] `.gitignore` includes `.next`, `.vercel`, `.env*`, `docs/facilitator/`, `.cursor/mcp.json`
 - [ ] `next.config.ts` does not require env vars at build time
 
-## After the human deploys
+## After deploy
 
-1. Copy the production URL (e.g. `https://throughline-….vercel.app`).
-2. Replace `https://<THROUGHLINE_URL>` everywhere it appears (repo grep). At minimum:
-   - `README.md`
-   - `docs/labs/README.md`
-   - `docs/labs/00-prerequisites.md`
-   - `docs/labs/01-jira-lab.md`
-   - Facilitator desktop pack if they use it (outside repo; not in git)
-3. Smoke-test production: `/`, `/conversions`, `/demand`, `/listings`, `/boxes`, `/workshop`.
-4. Tell attendees Lab 1 uses the Vercel URL; Lab 2 and 3 stay local only.
+Production URL: **https://lockbox-status-intelligence.vercel.app**
+
+If the URL changes, grep the repo and facilitator desktop pack for `lockbox-status-intelligence.vercel.app` and update. At minimum check:
+
+- `README.md`
+- `docs/labs/README.md`
+- `docs/labs/00-prerequisites.md`
+- `docs/labs/01-jira-lab.md`
+- Facilitator desktop pack (outside repo)
+
+Smoke-test production: `/`, `/conversions`, `/demand`, `/listings`, `/boxes`, `/workshop`.
+
+Tell attendees Lab 1 uses the Vercel URL; Lab 2 and 3 stay local only.
 
 ## If build fails on Vercel but passes locally
 

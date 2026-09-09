@@ -20,8 +20,14 @@ If a setup step is not working after 2 minutes, use the bypass in that lab and k
 
 ## Links
 
-- Throughline app: https://<THROUGHLINE_URL>
+- Throughline app: https://lockbox-status-intelligence.vercel.app
+- Workshop (Lab 1): https://lockbox-status-intelligence.vercel.app/workshop
+- Lab 2 on the site: https://lockbox-status-intelligence.vercel.app/workshop/lab-2
+- Lab 3 on the site: https://lockbox-status-intelligence.vercel.app/workshop/lab-3
 - RAW board: https://dconroy.atlassian.net/jira/software/projects/RAW/boards/3
 - Create an Atlassian API token: https://id.atlassian.com/manage-profile/security/api-tokens
 - Token help: https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/
-- Repo (Lab 2 and Lab 3 only): https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence
+- Lab 1 sheet (GitHub): https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence/blob/main/docs/labs/01-jira-lab.md
+- Lab 2 sheet (GitHub): https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence/blob/main/docs/labs/02-dev-lab.md
+- Lab 3 sheet (GitHub): https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence/blob/main/docs/labs/03-qa-lab.md
+- Repo (Lab 2 and Lab 3): https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence

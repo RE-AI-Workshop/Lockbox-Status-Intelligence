@@ -47,14 +47,11 @@ Do **not** run `npm run generate` before the workshop. Committed `data/aggregate
 
 ## After deploy
 
-1. Copy the production URL (e.g. `https://lockbox-status-intelligence.vercel.app`).
-2. Replace `https://<THROUGHLINE_URL>` in (grep the repo to catch all):
-   - `README.md`
-   - `docs/labs/README.md`
-   - `docs/labs/00-prerequisites.md`
-   - `docs/labs/01-jira-lab.md`
-   - Your facilitator desktop pack (`~/Desktop/Throughline-Facilitator/START-HERE.md`, outside git)
-3. Smoke-test:
+**Production URL:** https://lockbox-status-intelligence.vercel.app
+
+Lab docs and README already point at this URL. If you change the Vercel domain, grep the repo for `lockbox-status-intelligence.vercel.app` and update.
+
+Smoke-test:
    - `/` — Market KPIs and watchlist
    - `/conversions`
    - `/demand`

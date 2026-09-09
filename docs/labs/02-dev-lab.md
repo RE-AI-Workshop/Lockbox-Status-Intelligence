@@ -10,10 +10,12 @@ Do not push. Do not deploy. The shared site stays as it is.
 
 ## Links
 
+- This lab: https://lockbox-status-intelligence.vercel.app/workshop/lab-2
+- Lab 3 (next): https://lockbox-status-intelligence.vercel.app/workshop/lab-3
+- Lab 1: https://lockbox-status-intelligence.vercel.app/workshop
 - Repo: https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence
+- Shared demo site (do not deploy over this): https://lockbox-status-intelligence.vercel.app
 - RAW board: https://dconroy.atlassian.net/jira/software/projects/RAW/boards/3
-- Create an Atlassian API token: https://id.atlassian.com/manage-profile/security/api-tokens
-- Token help: https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/
 
 ## 1. Open the project root
 

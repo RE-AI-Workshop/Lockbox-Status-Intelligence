@@ -10,12 +10,14 @@ Set the Cursor chat to **Agent**, not Plan, not Ask.
 
 ## Links
 
-- Throughline app: https://<THROUGHLINE_URL>
+- Throughline app: https://lockbox-status-intelligence.vercel.app
+- Workshop (Lab 1): https://lockbox-status-intelligence.vercel.app/workshop
+- Lab 2: https://lockbox-status-intelligence.vercel.app/workshop/lab-2
+- Lab 3: https://lockbox-status-intelligence.vercel.app/workshop/lab-3
 - RAW board: https://dconroy.atlassian.net/jira/software/projects/RAW/boards/3
 - Create an Atlassian API token: https://id.atlassian.com/manage-profile/security/api-tokens
-- Workshop page on the site: footer link labeled Workshop
 
-The Workshop page has the same setup steps and the same create-ticket prompt if you would rather stay in the browser.
+The Workshop page on the site has the same setup steps and the same create-ticket prompt if you would rather stay in the browser.
 
 ## 1. Pick a hunt zone
 
