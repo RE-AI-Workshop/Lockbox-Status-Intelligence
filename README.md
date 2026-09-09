@@ -61,6 +61,14 @@ npm run dev -- --port 3001
 
 You should not need `npm run generate` unless a ticket changes a market-wide formula that is stored in those files.
 
+## Deploy to Vercel
+
+A human connects this repo in the Vercel dashboard. Before the first push, run the agent prep prompt (`/prep-vercel`) or follow [docs/deploy-vercel.md](docs/deploy-vercel.md).
+
+Summary for Vercel: push to GitHub first, then import the repo. **Next.js**, root `.`, build `npm run build`, output directory empty (default), Node **20**, no environment variables. No `vercel.json` required.
+
+After deploy, replace `https://<THROUGHLINE_URL>` above and in the lab docs listed in [docs/deploy-vercel.md](docs/deploy-vercel.md).
+
 ## Jira MCP
 
 Copy `.cursor/mcp.json.example` to `.cursor/mcp.json` and add your Atlassian email and API token. Never commit the real file.
