@@ -2,11 +2,11 @@
 
 Timebox: 45 to 60 minutes.
 
-You will clone Throughline, run it on your laptop, and implement **one** RAW ticket: the Lab 1 issue you filed (or a gold key if a facilitator gave you one).
+You will clone Throughline, run it on your laptop, and fix **one** RAW ticket: the issue you filed in Lab 1, or a backup ticket key from your facilitator.
 
-Set the Cursor chat to **Agent**, not Plan, not Ask.
+Set the Cursor chat to **Agent**, not Plan or Ask.
 
-Do not push. Do not deploy. The shared site stays as it is.
+Do not push. Do not deploy. The shared site at https://lockbox-status-intelligence.vercel.app stays as it is.
 
 ## Links
 
@@ -14,12 +14,13 @@ Do not push. Do not deploy. The shared site stays as it is.
 - Lab 3 (next): https://lockbox-status-intelligence.vercel.app/workshop/lab-3
 - Lab 1: https://lockbox-status-intelligence.vercel.app/workshop
 - Repo: https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence
-- Shared demo site (do not deploy over this): https://lockbox-status-intelligence.vercel.app
 - RAW board: https://dconroy.atlassian.net/jira/software/projects/RAW/boards/3
 
-## 1. Open the project root
+## 1. Open the project in Cursor
 
-1. Clone with HTTPS (macOS, Linux, or Git Bash):
+1. Clone the repo.
+
+macOS, Linux, or Git Bash:
 
 ```bash
 git clone https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence.git
@@ -31,108 +32,99 @@ Windows (PowerShell):
 git clone https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence.git
 ```
 
-2. In Cursor: **File > Open Folder**. Open the clone root (`Lockbox-Status-Intelligence`), not a parent folder, not a single file.
+2. In Cursor: **File > Open Folder**. Open the clone root (`Lockbox-Status-Intelligence`), not a parent folder and not a single file inside it.
+
 3. Check Node:
 
 ```bash
 node -v
 ```
 
-You want v20 or newer. If the version is 16 or 18, pair with someone whose `node -v` is already 20. Do not spend the lab installing Node unless a facilitator is free to help.
+> **Expected:** Version 20 or newer. If you are on 16 or 18, pair with someone on Node 20. Do not spend the lab installing Node unless a facilitator can help.
 
-## 2. Optional: project MCP file
+## 2. Connect Jira again (optional)
 
-If Jira MCP already works from Settings, skip this.
+Skip this if Jira MCP already works from Cursor Settings.
 
-1. Copy the example (macOS or Linux):
+1. Copy the example config:
 
 ```bash
 cp .cursor/mcp.json.example .cursor/mcp.json
 ```
 
-Windows (PowerShell):
+On Windows (PowerShell): `Copy-Item .cursor/mcp.json.example .cursor/mcp.json`
 
-```powershell
-Copy-Item .cursor/mcp.json.example .cursor/mcp.json
-```
-
-2. Put your Atlassian email in `JIRA_USERNAME`.
-3. Put your token in `JIRA_API_TOKEN`.
-4. Leave `JIRA_URL` as `https://dconroy.atlassian.net`.
-5. Reload MCP if Cursor asks.
+2. Add your email to `JIRA_USERNAME` and your token to `JIRA_API_TOKEN`.
+3. Reload MCP if Cursor asks.
 
 `.cursor/mcp.json` is gitignored. Never commit a token.
 
-If MCP still fails after 2 minutes, paste the ticket from RAW into the chat and keep going.
+If MCP still fails after 2 minutes, paste your ticket from RAW into the chat and continue.
 
 ## 3. Install and run locally
 
-Let install finish while you read the track table in the next section.
+While `npm install` runs, skim the next section.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open http://127.0.0.1:3000 (or http://localhost:3000). You should see the Throughline Market page.
+Open http://127.0.0.1:3000. You should see the Throughline Market page.
+
+> **Expected:** The Market page loads on your machine. It will look like the shared site, but you are on localhost now.
 
 ### If this did not work
 
-- If port 3000 is busy:
+- Port 3000 busy: run `npm run dev -- --port 3001` and use http://127.0.0.1:3001 for the rest of the lab.
+- `npm install` fails: pair on a machine that already runs. Do not debug npm for more than 2 minutes.
+- Blank page: check the terminal for a compile error and raise a hand.
 
-```bash
-npm run dev -- --port 3001
-```
+## 4. Fix your Lab 1 ticket
 
-Use http://127.0.0.1:3001 for the rest of the lab.
+This is the main work for Lab 2.
 
-- If `npm install` hangs or fails, pair on a machine that already runs. Do not debug the registry for more than 2 minutes.
-- If the page is blank, check the terminal for a compile error and raise a hand.
+1. Write down your Lab 1 key (`RAW-NN`). No ticket yet? Ask your facilitator for a backup RAW ticket key.
+2. Open the issue in Jira. Read the acceptance criteria. Treat those as the definition of done.
+3. Pick a prompt based on **Track** in the ticket description:
 
-## 4. Main (required): fix your Lab 1 ticket
-
-1. Write down your Lab 1 key (`RAW-NN`). If you do not have a usable ticket, ask a facilitator for a gold key.
-2. Open the issue. Read the acceptance criteria. Those are binding.
-3. Pick one prompt from Track:
-
-| Track on the ticket | Prompt to paste |
+| Track | Open this prompt |
 | --- | --- |
 | Backend | `.github/prompts/fix-backend.prompt.md` |
 | Frontend | `.github/prompts/fix-frontend.prompt.md` |
-| Full-stack | Start with the layer the hunt implied. The other layer is stretch. |
+| Full-stack | Start with the layer your hunt suggested. The other layer is stretch. |
 
-Shortcut if slash commands loaded: `/fix-backend` or `/fix-frontend`. If they did not load, you opened the wrong folder, or paste the prompt file.
+Shortcuts: `/fix-backend` or `/fix-frontend`. If slash commands do not load, paste the prompt file into chat.
 
-4. Tell the agent the ticket key and that localhost is running.
+4. Tell the agent your ticket key and that localhost is running.
 
-**Backend** may change `lib/intelligence.ts` and data helpers. It must not restyle the app.
+**Backend** work lives in `lib/intelligence.ts` and data helpers. Do not restyle the app.
 
-**Frontend** may change `app/` and `components/`. It must read `docs/ui-spec.md` first. It should click the flow with Playwright MCP. If that MCP is missing, you click localhost yourself.
+**Frontend** work lives in `app/` and `components/`. Read `docs/ui-spec.md` first. The agent should verify in the browser when it can.
 
-Do not hunt other defects. Do not clean up formulas that are not in the ticket.
+Fix only what your ticket asks for. Do not chase other bugs.
 
 ### If this did not work
 
 - Chat flipped to Plan: switch back to Agent, or paste the prompt file again.
-- Agent edited the wrong layer: stop it. Formula tickets go to the backend prompt. Visible controls go to the frontend prompt.
-- You cannot tell if the fix worked: click the same path you used in Lab 1 on localhost, not on the shared site.
+- Agent edited the wrong layer: stop it. Formulas go to the backend prompt. Visible UI goes to the frontend prompt.
+- Not sure the fix worked: click the same path you used in Lab 1 on **localhost**, not on Vercel.
 
 ## Done when
 
-- Localhost matches the acceptance criteria on your **main** Lab 1 ticket.
+- Localhost matches the acceptance criteria on your main Lab 1 ticket.
 - You did not push or deploy.
-- You have the RAW key written down for Lab 3.
+- You still have the RAW key for Lab 3.
 
-That is a complete Lab 2. Stop here if the hour is ending.
+Stop here if time is up. That is a complete Lab 2.
 
 ## If you finished early
 
-Only start this section after the Done when list is true for your main ticket.
+Only start here after **Done when** is true for your main ticket.
 
 1. Paste `.github/prompts/find-bonus-bug.prompt.md` (or run `/find-bonus-bug`).
-2. The agent should search RAW, pick **one** logic issue that is not already filed, and create a new RAW issue through MCP.
-3. If MCP fails, take the paste-ready markdown to the RAW Create screen (Path C).
-4. Run `/fix-backend` or `/fix-frontend` on that **new** key only.
-5. Stop after one bonus ticket.
+2. Let the agent file **one** new RAW issue for a logic bug that is not already on the board.
+3. Fix that new key with `/fix-backend` or `/fix-frontend`.
+4. Stop after one bonus ticket.
 
-If you have not finished the main ticket, ignore this section.
+If your main ticket is not done, skip this section.

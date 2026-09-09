@@ -21,6 +21,9 @@ const components: Components = {
     </a>
   ),
   strong: ({ children }) => <strong className="font-semibold text-[var(--text)]">{children}</strong>,
+  blockquote: ({ children }) => (
+    <blockquote className="border-l-2 border-[var(--accent)] bg-[#100d0a] px-4 py-3 text-[var(--text)]">{children}</blockquote>
+  ),
   code: ({ className, children }) => {
     const isBlock = className?.includes("language-");
     if (isBlock) {

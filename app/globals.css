@@ -424,6 +424,14 @@ code {
   margin-top: 0.75rem;
 }
 
+.workshop-doc blockquote {
+  margin-top: 0.75rem;
+}
+
+.workshop-doc blockquote p {
+  color: var(--text);
+}
+
 .workshop-doc p + ul,
 .workshop-doc p + ol,
 .workshop-doc ul + p,
