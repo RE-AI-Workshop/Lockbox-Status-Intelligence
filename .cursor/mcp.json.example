@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "jira": {
+      "command": "npx",
+      "args": ["-y", "mcp-atlassian"],
+      "env": {
+        "JIRA_URL": "https://dconroy.atlassian.net",
+        "JIRA_USERNAME": "<your-email>",
+        "JIRA_API_TOKEN": "<your-token>",
+        "JIRA_PROJECTS_FILTER": "RAW"
+      }
+    }
+  }
+}

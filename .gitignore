@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+dist
+.vercel
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+.cursor/mcp.json
+# Facilitator answer key and notes (never commit)
+docs/facilitator/
+playwright-report
+test-results

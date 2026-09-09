@@ -1,0 +1,417 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #13100c;
+  --bg-elev: #1b1712;
+  --bg-soft: #262017;
+  --line: #3d3428;
+  --line-strong: #5a4c3a;
+  --text: #f3eadc;
+  --muted: #9a8c78;
+  --accent: #e25a1c;
+  --accent-deep: #b84412;
+  --gold: #e25a1c;
+  --gold-deep: #b84412;
+  --teal: #8faf6a;
+  --teal-deep: #6d8a4e;
+  --signal: #d8a03c;
+  --danger: #d45a48;
+  --ok: #8faf6a;
+  --shadow: none;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans), "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+::selection {
+  background: var(--accent);
+  color: #1b120c;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+a {
+  color: inherit;
+}
+
+.font-display {
+  font-family: var(--font-sans), "Avenir Next", "Segoe UI", sans-serif;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+.page-title {
+  font-family: var(--font-sans), "Avenir Next", "Segoe UI", sans-serif;
+  font-size: clamp(1.6rem, 2.1vw, 2.15rem);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.section-title {
+  font-family: var(--font-sans), "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.stat {
+  font-family: ui-monospace, "SF Mono", "IBM Plex Mono", Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.tabular {
+  font-family: ui-monospace, "SF Mono", "IBM Plex Mono", Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.kicker {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.app-shell {
+  min-height: 100vh;
+  background:
+    linear-gradient(90deg, #18140f 0, #18140f 14px, transparent 14px),
+    var(--bg);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--line);
+  background: #16120e;
+}
+
+.desk-tick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 1px solid var(--line);
+  background: #100d0a;
+  padding: 0.4rem 1.25rem;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.wordmark {
+  font-family: var(--font-sans), "Avenir Next", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  color: var(--text);
+}
+
+.nav-link {
+  padding: 0.55rem 0.7rem 0.65rem;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  margin-bottom: -1px;
+}
+
+.nav-link:hover {
+  color: var(--text);
+}
+
+.nav-link[data-active="true"] {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  background: var(--bg-elev);
+}
+
+.kpi-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 8.5rem;
+  padding: 0.95rem 1rem 1rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  background: var(--bg-elev);
+}
+
+.watch-card {
+  display: block;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.watch-card:hover {
+  background: rgba(226, 90, 28, 0.06);
+}
+
+li:last-child .watch-card {
+  border-bottom: none;
+}
+
+#lockbox,
+#comps {
+  scroll-margin-top: 7.5rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.12rem 0.4rem;
+  border: 1px solid var(--line);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+}
+
+.badge-Active,
+.pill-High,
+.lock-available {
+  color: var(--ok);
+  border-color: rgba(143, 175, 106, 0.45);
+  background: rgba(143, 175, 106, 0.08);
+}
+
+.badge-Pending,
+.pill-Moderate,
+.lock-quiet {
+  color: var(--signal);
+  border-color: rgba(216, 160, 60, 0.45);
+  background: rgba(216, 160, 60, 0.08);
+}
+
+.badge-Sold,
+.lock-auto-locked {
+  color: #cfc3b0;
+  border-color: var(--line);
+  background: transparent;
+}
+
+.badge-Withdrawn,
+.lock-manual-off {
+  color: var(--danger);
+  border-color: rgba(212, 90, 72, 0.45);
+  background: rgba(212, 90, 72, 0.08);
+}
+
+.pill-Low {
+  color: var(--muted);
+  border-color: var(--line);
+  background: transparent;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #100d0a;
+  color: var(--text);
+  border-radius: 0;
+  padding: 0.5rem 0.7rem;
+  outline: none;
+}
+
+.field:focus {
+  border-color: var(--accent);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.82rem;
+}
+
+.data-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 0.55rem 0.75rem;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: #16120e;
+  border-bottom: 1px solid var(--line);
+}
+
+.data-table td {
+  padding: 0.62rem 0.75rem;
+  border-bottom: 1px solid rgba(61, 52, 40, 0.8);
+}
+
+.data-table tbody tr {
+  cursor: pointer;
+}
+
+.data-table tbody tr:hover {
+  background: rgba(226, 90, 28, 0.05);
+}
+
+.data-table tbody tr[data-selected="true"] {
+  background: rgba(226, 90, 28, 0.12);
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  width: 1px;
+  background: var(--line);
+}
+
+.timeline li {
+  position: relative;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -0.92rem;
+  top: 0.85rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  background: var(--ok);
+}
+
+.timeline li[data-kind="offer"]::before {
+  background: var(--accent);
+}
+
+.map-canvas {
+  position: relative;
+  min-height: 460px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #0c0a08;
+  cursor: grab;
+  touch-action: none;
+}
+
+.map-canvas.is-panning {
+  cursor: grabbing;
+}
+
+.map-dot {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.map-label {
+  pointer-events: none;
+}
+
+.map-tip {
+  position: absolute;
+  z-index: 2;
+  min-width: 9rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--line);
+  background: #16120e;
+  color: var(--text);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  pointer-events: none;
+}
+
+.metro-chip {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  padding: 0.12rem 0.4rem;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.metro-chip-active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.chart-fill {
+  background: var(--accent);
+}
+
+pre,
+code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav-link {
+    padding: 0.4rem 0.45rem 0.55rem;
+    font-size: 0.78rem;
+  }
+
+  .app-shell {
+    background: var(--bg);
+  }
+}

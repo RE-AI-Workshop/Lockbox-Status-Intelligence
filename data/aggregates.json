@@ -1,0 +1,378 @@
+{
+  "totalListings": 50000,
+  "exploreCount": 2400,
+  "generatedAt": "2026-09-09T17:19:17.705Z",
+  "listingsWithShowings": 43987,
+  "listingsWithOffers": 12306,
+  "offerCount": 24555,
+  "acceptedCount": 8573,
+  "closedCount": 5983,
+  "homepagePulseRate": 0.24612,
+  "showingToOfferRate": 0.27976447586787007,
+  "offerToCloseRate": 0.24436109027256814,
+  "medianDaysToOffer": 13,
+  "pOfferAfterN": [
+    {
+      "n": 0,
+      "probability": 0.27976447586787007,
+      "sampleSize": 43987
+    },
+    {
+      "n": 1,
+      "probability": 0.3138,
+      "sampleSize": 41533
+    },
+    {
+      "n": 2,
+      "probability": 0.3512,
+      "sampleSize": 39089
+    },
+    {
+      "n": 3,
+      "probability": 0.3924,
+      "sampleSize": 36671
+    },
+    {
+      "n": 4,
+      "probability": 0.4361,
+      "sampleSize": 34312
+    },
+    {
+      "n": 5,
+      "probability": 0.4779,
+      "sampleSize": 31858
+    },
+    {
+      "n": 6,
+      "probability": 0.5086,
+      "sampleSize": 29417
+    },
+    {
+      "n": 7,
+      "probability": 0.5243,
+      "sampleSize": 26917
+    },
+    {
+      "n": 8,
+      "probability": 0.5162,
+      "sampleSize": 24511
+    },
+    {
+      "n": 9,
+      "probability": 0.4927,
+      "sampleSize": 22071
+    },
+    {
+      "n": 10,
+      "probability": 0.4608,
+      "sampleSize": 19650
+    },
+    {
+      "n": 11,
+      "probability": 0.4276,
+      "sampleSize": 17220
+    },
+    {
+      "n": 12,
+      "probability": 0.3941,
+      "sampleSize": 14779
+    }
+  ],
+  "zipDemand": [
+    {
+      "zip": "85016",
+      "metro": "PHX",
+      "city": "Phoenix",
+      "score": 16877,
+      "listingCount": 1582,
+      "lat": 33.5102,
+      "lng": -112.0748
+    },
+    {
+      "zip": "30308",
+      "metro": "ATL",
+      "city": "Atlanta",
+      "score": 16477,
+      "listingCount": 1647,
+      "lat": 33.76596529964684,
+      "lng": -84.35054421506311
+    },
+    {
+      "zip": "78701",
+      "metro": "AUS",
+      "city": "Austin",
+      "score": 16165,
+      "listingCount": 1621,
+      "lat": 30.269,
+      "lng": -97.742
+    },
+    {
+      "zip": "75201",
+      "metro": "DAL",
+      "city": "Dallas",
+      "score": 16072,
+      "listingCount": 1634,
+      "lat": 32.78,
+      "lng": -96.8
+    },
+    {
+      "zip": "80203",
+      "metro": "DEN",
+      "city": "Denver",
+      "score": 15959,
+      "listingCount": 1584,
+      "lat": 39.74333311882643,
+      "lng": -105.00656171145822
+    },
+    {
+      "zip": "78704",
+      "metro": "AUS",
+      "city": "Austin",
+      "score": 15820,
+      "listingCount": 1603,
+      "lat": 30.294997689838336,
+      "lng": -97.71860432541175
+    },
+    {
+      "zip": "37201",
+      "metro": "BNA",
+      "city": "Nashville",
+      "score": 15730,
+      "listingCount": 1591,
+      "lat": 36.14636807397455,
+      "lng": -86.78145849995398
+    },
+    {
+      "zip": "85012",
+      "metro": "PHX",
+      "city": "Phoenix",
+      "score": 15728,
+      "listingCount": 1586,
+      "lat": 33.47967129538683,
+      "lng": -112.03622373323282
+    },
+    {
+      "zip": "28207",
+      "metro": "CLT",
+      "city": "Charlotte",
+      "score": 15716,
+      "listingCount": 1588,
+      "lat": 35.26067939259149,
+      "lng": -80.79878396028131
+    },
+    {
+      "zip": "33602",
+      "metro": "TPA",
+      "city": "Tampa",
+      "score": 15677,
+      "listingCount": 1571,
+      "lat": 27.948,
+      "lng": -82.458
+    },
+    {
+      "zip": "80205",
+      "metro": "DEN",
+      "city": "Denver",
+      "score": 15629,
+      "listingCount": 1596,
+      "lat": 39.7366390720902,
+      "lng": -104.98973176689324
+    },
+    {
+      "zip": "80209",
+      "metro": "DEN",
+      "city": "Denver",
+      "score": 15475,
+      "listingCount": 1549,
+      "lat": 39.77052818707265,
+      "lng": -104.95214753193288
+    },
+    {
+      "zip": "37206",
+      "metro": "BNA",
+      "city": "Nashville",
+      "score": 15465,
+      "listingCount": 1579,
+      "lat": 36.181528682694584,
+      "lng": -86.7779115814491
+    },
+    {
+      "zip": "37212",
+      "metro": "BNA",
+      "city": "Nashville",
+      "score": 15443,
+      "listingCount": 1603,
+      "lat": 36.18602665605704,
+      "lng": -86.75414760373849
+    },
+    {
+      "zip": "28204",
+      "metro": "CLT",
+      "city": "Charlotte",
+      "score": 15426,
+      "listingCount": 1583,
+      "lat": 35.241802019908,
+      "lng": -80.82036931028999
+    },
+    {
+      "zip": "28202",
+      "metro": "CLT",
+      "city": "Charlotte",
+      "score": 15422,
+      "listingCount": 1559,
+      "lat": 35.20636269459538,
+      "lng": -80.86160619665813
+    },
+    {
+      "zip": "30305",
+      "metro": "ATL",
+      "city": "Atlanta",
+      "score": 15402,
+      "listingCount": 1557,
+      "lat": 33.74959488281142,
+      "lng": -84.39963955435856
+    },
+    {
+      "zip": "85020",
+      "metro": "PHX",
+      "city": "Phoenix",
+      "score": 15321,
+      "listingCount": 1564,
+      "lat": 33.458007223374764,
+      "lng": -112.07467000398411
+    },
+    {
+      "zip": "85018",
+      "metro": "PHX",
+      "city": "Phoenix",
+      "score": 15314,
+      "listingCount": 1558,
+      "lat": 33.43334143075077,
+      "lng": -112.090787979363
+    },
+    {
+      "zip": "75219",
+      "metro": "DAL",
+      "city": "Dallas",
+      "score": 15298,
+      "listingCount": 1549,
+      "lat": 32.800152081619764,
+      "lng": -96.7619047587649
+    },
+    {
+      "zip": "33611",
+      "metro": "TPA",
+      "city": "Tampa",
+      "score": 15245,
+      "listingCount": 1561,
+      "lat": 27.992716533317605,
+      "lng": -82.41995138313183
+    },
+    {
+      "zip": "28203",
+      "metro": "CLT",
+      "city": "Charlotte",
+      "score": 15242,
+      "listingCount": 1571,
+      "lat": 35.215,
+      "lng": -80.858
+    },
+    {
+      "zip": "37203",
+      "metro": "BNA",
+      "city": "Nashville",
+      "score": 15226,
+      "listingCount": 1524,
+      "lat": 36.151,
+      "lng": -86.796
+    },
+    {
+      "zip": "78702",
+      "metro": "AUS",
+      "city": "Austin",
+      "score": 15220,
+      "listingCount": 1537,
+      "lat": 30.255783124568683,
+      "lng": -97.74085097324746
+    },
+    {
+      "zip": "75206",
+      "metro": "DAL",
+      "city": "Dallas",
+      "score": 15189,
+      "listingCount": 1554,
+      "lat": 32.786117186498174,
+      "lng": -96.79991108941658
+    },
+    {
+      "zip": "33609",
+      "metro": "TPA",
+      "city": "Tampa",
+      "score": 15177,
+      "listingCount": 1544,
+      "lat": 27.95381758318227,
+      "lng": -82.43857113855918
+    },
+    {
+      "zip": "80202",
+      "metro": "DEN",
+      "city": "Denver",
+      "score": 15001,
+      "listingCount": 1535,
+      "lat": 39.752,
+      "lng": -105.004
+    },
+    {
+      "zip": "78703",
+      "metro": "AUS",
+      "city": "Austin",
+      "score": 14882,
+      "listingCount": 1481,
+      "lat": 30.273013429076226,
+      "lng": -97.72594673927351
+    },
+    {
+      "zip": "75204",
+      "metro": "DAL",
+      "city": "Dallas",
+      "score": 14707,
+      "listingCount": 1487,
+      "lat": 32.79,
+      "lng": -96.79
+    },
+    {
+      "zip": "30306",
+      "metro": "ATL",
+      "city": "Atlanta",
+      "score": 14569,
+      "listingCount": 1488,
+      "lat": 33.77139712307928,
+      "lng": -84.36526839661366
+    },
+    {
+      "zip": "33606",
+      "metro": "TPA",
+      "city": "Tampa",
+      "score": 14505,
+      "listingCount": 1527,
+      "lat": 27.95424704624051,
+      "lng": -82.48211370442324
+    },
+    {
+      "zip": "30309",
+      "metro": "ATL",
+      "city": "Atlanta",
+      "score": 14503,
+      "listingCount": 1487,
+      "lat": 33.784,
+      "lng": -84.384
+    }
+  ],
+  "watchlistIds": [
+    "LST-PHX-1842",
+    "LST-ATL-1108",
+    "LST-DEN-0055",
+    "LST-AUS-0902",
+    "LST-CLT-0088"
+  ]
+}
