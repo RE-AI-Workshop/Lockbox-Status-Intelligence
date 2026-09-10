@@ -30,35 +30,39 @@ export default function MarketPage() {
             look. Each one has a box. You can browse {aggregates.exploreCount.toLocaleString()} listings in Listings.
           </p>
         </div>
-        <aside className="panel p-4">
+        <aside className="panel p-5">
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
             <p className="kicker">What&apos;s here</p>
             <Link href="/boxes" className="text-sm text-[var(--accent)] hover:underline">
               See boxes
             </Link>
           </div>
-          <div className="mt-3 grid gap-4 sm:grid-cols-3">
+          <div className="mt-4 grid gap-5 sm:grid-cols-3">
             <div>
-              <p className="stat text-[1.55rem] leading-none">{aggregates.totalListings.toLocaleString()}</p>
-              <p className="mt-1 text-sm text-[var(--muted)]">listings in eight cities</p>
+              <p className="kicker">Listings</p>
+              <p className="stat mt-2 text-[1.55rem] leading-none text-[var(--marine)]">
+                {aggregates.totalListings.toLocaleString()}
+              </p>
+              <p className="mt-2 text-xs leading-relaxed text-[var(--muted)]">Eight cities in this sample market</p>
             </div>
             <div>
-              <p className="kicker">Boxes</p>
-              <p className="mt-1 text-sm tabular">
-                {fleet.open.toLocaleString()} open
-                <span className="text-[var(--muted)]"> · </span>
-                {fleet.autoLocked.toLocaleString()} locked
+              <p className="kicker">Boxes open</p>
+              <p className="stat mt-2 text-[1.55rem] leading-none text-[var(--marine)]">
+                {fleet.open.toLocaleString()}
+              </p>
+              <p className="mt-2 text-xs leading-relaxed text-[var(--muted)]">
+                {fleet.autoLocked.toLocaleString()} locked on Pending or Sold
               </p>
             </div>
             <div>
-              <p className="kicker">Watchlist</p>
-              <p className="mt-1 text-sm tabular">
-                {lockedWatch} of {watchlist.length} locked
+              <p className="kicker">Watchlist locked</p>
+              <p className="stat mt-2 text-[1.55rem] leading-none text-[var(--marine)]">
+                {lockedWatch} of {watchlist.length}
               </p>
-              <p className="mt-0.5 text-xs text-[var(--muted)]">Locks on Pending or Sold</p>
+              <p className="mt-2 text-xs leading-relaxed text-[var(--muted)]">Locks on Pending or Sold</p>
             </div>
           </div>
-          <div className="mt-3 flex flex-wrap gap-1.5 border-t border-[var(--line)] pt-3">
+          <div className="mt-4 flex flex-wrap gap-1.5 border-t border-[var(--line)] pt-4">
             {METRO_ORDER.map((metro) => (
               <MetroChip key={metro}>{metroLabel(metro)}</MetroChip>
             ))}
@@ -70,7 +74,7 @@ export default function MarketPage() {
         <KpiCard
           label="Showing to offer"
           value={formatPercent(aggregates.homepagePulseRate)}
-          hint="Share of all listings that have received an offer"
+          hint="Share of all 50,000 listings — including homes with no showings"
         />
         <KpiCard
           label="Offer to close"
@@ -139,12 +143,12 @@ export default function MarketPage() {
               "Cash deals close faster here, but most accepted offers are still financed.",
             ].map((copy, index) => (
               <li key={copy} className="flex gap-4 text-sm leading-relaxed text-[var(--muted)]">
-                <span className="stat text-[var(--accent)]">0{index + 1}</span>
+                <span className="stat text-[var(--accent-deep)]">0{index + 1}</span>
                 <span>{copy}</span>
               </li>
             ))}
             <li className="flex gap-4 text-sm leading-relaxed text-[var(--muted)]">
-              <span className="stat text-[var(--accent)]">04</span>
+              <span className="stat text-[var(--accent-deep)]">04</span>
               <span>
                 If a rate on this page looks off, check the same names on{" "}
                 <Link href="/conversions" className="text-[var(--accent)] hover:underline">

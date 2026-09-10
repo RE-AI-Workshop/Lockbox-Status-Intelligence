@@ -19,7 +19,7 @@ export function DemandPill({ level }: { level: DemandLevel }) {
 export function HealthMark({ health }: { health: "On track" | "At risk" | "Stalled" }) {
   const tone =
     health === "On track"
-      ? "text-[var(--accent)]"
+      ? "text-[var(--ok)]"
       : health === "At risk"
         ? "text-[var(--danger)]"
         : "text-[var(--muted)]";

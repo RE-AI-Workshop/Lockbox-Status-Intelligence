@@ -86,7 +86,7 @@ export function DemandDesk({
             ) : null}
           </div>
           {selected ? (
-            <div className="mt-4 border border-[var(--line)] bg-[#100d0a] px-4 py-3">
+            <div className="surface-inset mt-4 px-4 py-3">
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <p className="font-medium tracking-tight">
                   <span className="tabular">{selected.zip}</span>
@@ -111,7 +111,10 @@ export function DemandDesk({
                 <div>
                   <p className="kicker">Map intensity</p>
                   <p className="mt-1 inline-flex items-center gap-2 text-sm">
-                    <span className="h-3.5 w-7" style={{ backgroundColor: intensityFill(selected.intensity) }} />
+                    <span
+                      className="inline-block h-2 w-8 rounded-full"
+                      style={{ backgroundColor: intensityFill(selected.intensity) }}
+                    />
                     <span>{intensityLabel(selected.intensity)}</span>
                   </p>
                   <p className="mt-1 text-xs text-[var(--muted)]">From score vs other ZIPs</p>
@@ -153,7 +156,10 @@ export function DemandDesk({
                     <td className="tabular">{row.score.toLocaleString()}</td>
                     <td>
                       <span className="inline-flex items-center gap-2">
-                        <span className="h-3.5 w-7" style={{ backgroundColor: intensityFill(row.intensity) }} />
+                        <span
+                          className="inline-block h-2 w-8 rounded-full"
+                          style={{ backgroundColor: intensityFill(row.intensity) }}
+                        />
                         <span>{intensityLabel(row.intensity)}</span>
                       </span>
                     </td>
@@ -169,13 +175,22 @@ export function DemandDesk({
             <div>
               <h2 className="section-title">Map</h2>
               <p className="mt-1 text-sm text-[var(--muted)]">
-                Click a ZIP. Use the city chips to filter. Drag to move. Scroll to zoom.
+                {mapPoints.length} ZIPs on this map
+                {metroFilter !== "ALL" ? ` · table is filtered to ${visible.length}` : ""}. Click a ZIP. Drag or
+                scroll to move.
               </p>
             </div>
-            <div className="flex gap-2 text-[11px] text-[var(--muted)]">
-              <span className="badge pill-Low">Low</span>
-              <span className="badge pill-Moderate">Medium</span>
-              <span className="badge pill-High">High</span>
+            <div className="flex items-center gap-3 text-xs text-[var(--muted)]">
+              {[
+                { label: "Low", value: 0.15 },
+                { label: "Medium", value: 0.5 },
+                { label: "High", value: 0.9 },
+              ].map((item) => (
+                <span key={item.label} className="inline-flex items-center gap-1.5">
+                  <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: intensityFill(item.value) }} />
+                  {item.label}
+                </span>
+              ))}
             </div>
           </div>
           {selected ? (
@@ -229,9 +244,7 @@ export function DemandDesk({
                 key={row.metro}
                 type="button"
                 onClick={() => selectMetro(row.metro)}
-                className={`border px-4 py-3 text-left ${
-                  active ? "border-[var(--accent)] bg-[#1a140f]" : "border-[var(--line)] bg-[#100d0a]"
-                }`}
+                className={`px-4 py-3 text-left ${active ? "surface-active" : "surface-inset"}`}
               >
                 <div className="flex items-center justify-between gap-2">
                   <MetroChip>{metroLabel(row.metro)}</MetroChip>

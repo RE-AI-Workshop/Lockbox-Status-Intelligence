@@ -32,7 +32,7 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
     <div className="space-y-4">
       <div className="panel grid gap-3 p-4 sm:grid-cols-[12rem_minmax(0,1fr)_auto_auto] sm:items-end">
         <label className="text-sm">
-          <span className="mb-1.5 block text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]">City</span>
+          <span className="field-label">City</span>
           <select
             className="field"
             value={metro}
@@ -47,7 +47,7 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
           </select>
         </label>
         <label className="text-sm">
-          <span className="mb-1.5 block text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]">Search</span>
+          <span className="field-label">Search</span>
           <input
             className="field"
             placeholder="85016"
@@ -61,13 +61,18 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
         </label>
         <button
           type="button"
-          className="h-[2.65rem] border border-[var(--line)] px-3 text-sm hover:border-[var(--accent)]"
+          className="h-[2.65rem] rounded-[var(--radius)] border border-[var(--line)] bg-[var(--bg-elev)] px-3 text-sm hover:border-[var(--accent)]"
           onClick={() => setSortDir((dir) => (dir === "asc" ? "desc" : "asc"))}
         >
           Days to offer {sortDir === "asc" ? "Asc" : "Desc"}
         </button>
       </div>
 
+      <p className="text-sm text-[var(--muted)]">
+        {rows.length.toLocaleString()} listings
+        {activeOnly ? " with Active only on" : ""}
+        {rows.some((listing) => listing.status === "Sold") && activeOnly ? " · Sold rows are still in this list" : ""}
+      </p>
       <div className="panel overflow-auto">
         <table className="data-table">
           <thead>

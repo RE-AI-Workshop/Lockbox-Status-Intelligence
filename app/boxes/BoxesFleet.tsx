@@ -42,7 +42,7 @@ export function BoxesFleet({ listings }: { listings: Listing[] }) {
     <div className="space-y-4">
       <div className="panel grid gap-3 p-4 sm:grid-cols-[12rem_12rem] sm:items-end">
         <label className="text-sm">
-          <span className="mb-1.5 block text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]">City</span>
+          <span className="field-label">City</span>
           <select
             className="field"
             value={metro}
@@ -57,7 +57,7 @@ export function BoxesFleet({ listings }: { listings: Listing[] }) {
           </select>
         </label>
         <label className="text-sm">
-          <span className="mb-1.5 block text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]">Lock</span>
+          <span className="field-label">Lock</span>
           <select
             className="field"
             value={mode}

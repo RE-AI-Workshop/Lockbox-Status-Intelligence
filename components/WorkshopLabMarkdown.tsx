@@ -22,7 +22,7 @@ const components: Components = {
   ),
   strong: ({ children }) => <strong className="font-semibold text-[var(--text)]">{children}</strong>,
   blockquote: ({ children }) => (
-    <blockquote className="border-l-2 border-[var(--accent)] bg-[#100d0a] px-4 py-3 text-[var(--text)]">{children}</blockquote>
+    <blockquote className="surface-inset border-l-[3px] border-l-[var(--accent)] px-4 py-3 text-[var(--text)]">{children}</blockquote>
   ),
   code: ({ className, children }) => {
     const isBlock = className?.includes("language-");
@@ -31,7 +31,7 @@ const components: Components = {
     }
     return <code className="font-mono text-[0.9em] text-[var(--text)]">{children}</code>;
   },
-  pre: ({ children }) => <pre className="mt-3 overflow-auto bg-[#100d0a] p-4 text-xs">{children}</pre>,
+  pre: ({ children }) => <pre className="surface-inset mt-3 overflow-auto p-4 text-xs">{children}</pre>,
   table: ({ children }) => (
     <div className="mt-3 overflow-auto">
       <table className="data-table">{children}</table>

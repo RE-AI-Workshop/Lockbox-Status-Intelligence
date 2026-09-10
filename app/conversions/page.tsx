@@ -44,7 +44,7 @@ export default function ConversionsPage() {
         />
         <div className="kpi-card">
           <p className="kicker">Offer to close</p>
-          <p className="stat mt-3 text-[2rem] leading-none">
+          <p className="stat mt-3 text-[2rem] leading-none text-[var(--marine)]">
             {formatPercent(aggregates.showingToOfferRate)}
           </p>
           <p className="mt-3 text-xs leading-relaxed text-[var(--muted)]">
@@ -98,19 +98,19 @@ export default function ConversionsPage() {
           </Link>
         </div>
         <div className="mt-5 grid gap-4 sm:grid-cols-3">
-          <div className="border border-[var(--line)] bg-[#100d0a] px-4 py-3">
+          <div className="surface-inset px-4 py-3">
             <p className="kicker">Showings</p>
-            <p className="stat mt-2 text-[1.65rem]">{access.releases.toLocaleString()}</p>
+            <p className="stat mt-2 text-[1.65rem] text-[var(--marine)]">{access.releases.toLocaleString()}</p>
             <p className="mt-1 text-xs text-[var(--muted)]">Times someone went to see a home</p>
           </div>
-          <div className="border border-[var(--line)] bg-[#100d0a] px-4 py-3">
+          <div className="surface-inset px-4 py-3">
             <p className="kicker">Listings with offers</p>
-            <p className="stat mt-2 text-[1.65rem]">{access.withOffers.toLocaleString()}</p>
+            <p className="stat mt-2 text-[1.65rem] text-[var(--marine)]">{access.withOffers.toLocaleString()}</p>
             <p className="mt-1 text-xs text-[var(--muted)]">These homes have an offer</p>
           </div>
-          <div className="border border-[var(--line)] bg-[#100d0a] px-4 py-3">
+          <div className="surface-inset px-4 py-3">
             <p className="kicker">Boxes locked</p>
-            <p className="stat mt-2 text-[1.65rem]">{access.autoLocked.toLocaleString()}</p>
+            <p className="stat mt-2 text-[1.65rem] text-[var(--marine)]">{access.autoLocked.toLocaleString()}</p>
             <p className="mt-1 text-xs text-[var(--muted)]">
               Pending or Sold · {access.open.toLocaleString()} still open
             </p>
@@ -127,7 +127,7 @@ export default function ConversionsPage() {
             </p>
           </div>
         </div>
-        <div className="mt-6 grid grid-cols-[4.5rem_1fr_4.5rem] gap-3 text-[11px] uppercase tracking-[0.12em] text-[var(--muted)]">
+        <div className="mt-6 grid grid-cols-[4.5rem_1fr_4.5rem] gap-3 text-xs font-medium text-[var(--muted)]">
           <span />
           <div className="flex justify-between">
             <span>0%</span>

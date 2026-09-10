@@ -109,7 +109,7 @@ export default async function ListingDetailPage({
           ) : null}
         </div>
         <div className="kpi-card">
-          <p className="kicker">Price recommendation</p>
+          <p className="kicker">Price reccomendation</p>
           <p className="mt-3 text-[1.85rem] font-semibold capitalize leading-none">{rec.action}</p>
           {rec.amount ? <p className="stat mt-2 text-lg">{formatCurrency(rec.amount)}</p> : null}
           {traffic ? (
@@ -164,7 +164,7 @@ export default async function ListingDetailPage({
             {comps.map((comp) => {
               const delta = comp.listPrice - listing.listPrice;
               return (
-                <li key={comp.id} className="border border-[var(--line)] bg-[#100d0a] px-3 py-3">
+                <li key={comp.id} className="surface-inset px-3 py-3">
                   <p className="font-medium tracking-tight">
                     {comp.address}, {comp.city}
                   </p>

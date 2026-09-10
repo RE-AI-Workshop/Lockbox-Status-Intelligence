@@ -87,7 +87,7 @@ export function LockboxPanel({ listing }: { listing: Listing }) {
           </label>
           <div className="flex flex-wrap items-end gap-3">
             <label className="text-sm">
-              <span className="mb-1.5 block text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]">From</span>
+              <span className="field-label">From</span>
               <input
                 type="time"
                 className="field w-[9.5rem] tabular"
@@ -97,7 +97,7 @@ export function LockboxPanel({ listing }: { listing: Listing }) {
               />
             </label>
             <label className="text-sm">
-              <span className="mb-1.5 block text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]">To</span>
+              <span className="field-label">To</span>
               <input
                 type="time"
                 className="field w-[9.5rem] tabular"
