@@ -9,6 +9,7 @@ import { compareDaysToOffer, daysShowingToOffer, isActiveStatus, matchesQuery } 
 import { boxSerial } from "@/lib/lockbox";
 import { METRO_ORDER, metroLabel } from "@/lib/metros";
 import { listingPath } from "@/lib/paths";
+import { ramcoMemberForListing } from "@/lib/ramco";
 import type { Listing, Metro } from "@/lib/types";
 
 export function ListingsExplorer({ listings }: { listings: Listing[] }) {
@@ -87,30 +88,36 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
             </tr>
           </thead>
           <tbody>
-            {rows.slice(0, 80).map((listing) => (
-              <tr key={listing.id}>
-                <td>
-                  <Link href={listingPath(listing.id, "listings")} className="block whitespace-nowrap hover:text-[var(--accent)]">
-                    {listing.address}
-                  </Link>
-                </td>
-                <td className="tabular text-[var(--muted)]">{listing.zip}</td>
-                <td>
-                  <StatusBadge status={listing.status} />
-                </td>
-                <td>
-                  <Link href={listingPath(listing.id, "listings", "lockbox")} className="block whitespace-nowrap hover:text-[var(--accent)]">
-                    <span className="tabular text-xs">{boxSerial(listing)}</span>
-                  </Link>
-                  <div className="mt-1.5">
-                    <LiveLockBadge listing={listing} />
-                  </div>
-                </td>
-                <td className="tabular">{formatCurrency(listing.listPrice)}</td>
-                <td className="tabular">{listing.showings.length}</td>
-                <td className="tabular">{daysShowingToOffer(listing) ?? "—"}</td>
-              </tr>
-            ))}
+            {rows.slice(0, 80).map((listing) => {
+              const agent = ramcoMemberForListing(listing);
+              return (
+                <tr key={listing.id}>
+                  <td>
+                    <Link href={listingPath(listing.id, "listings")} className="block whitespace-nowrap hover:text-[var(--accent)]">
+                      {listing.address}
+                    </Link>
+                    <p className="mt-1 text-xs text-[var(--muted)]">
+                      {agent.name}, REALTOR · {agent.officeName}
+                    </p>
+                  </td>
+                  <td className="tabular text-[var(--muted)]">{listing.zip}</td>
+                  <td>
+                    <StatusBadge status={listing.status} />
+                  </td>
+                  <td>
+                    <Link href={listingPath(listing.id, "listings", "lockbox")} className="block whitespace-nowrap hover:text-[var(--accent)]">
+                      <span className="tabular text-xs">{boxSerial(listing)}</span>
+                    </Link>
+                    <div className="mt-1.5">
+                      <LiveLockBadge listing={listing} />
+                    </div>
+                  </td>
+                  <td className="tabular">{formatCurrency(listing.listPrice)}</td>
+                  <td className="tabular">{listing.showings.length}</td>
+                  <td className="tabular">{daysShowingToOffer(listing) ?? "—"}</td>
+                </tr>
+              );
+            })}
             {rows.length === 0 ? (
               <tr>
                 <td className="px-3 py-12 text-center text-[var(--muted)]" colSpan={7}>

@@ -1,4 +1,5 @@
 import { boxSerial } from "./lockbox";
+import { ramcoMemberForListing } from "./ramco";
 import type { DemandLevel, Listing } from "./types";
 
 export function listingsWithShowings(listings: Listing[]): Listing[] {
@@ -142,7 +143,8 @@ export function matchesQuery(listing: Listing, query: string): boolean {
   const trimmed = query.trim();
   if (!trimmed) return true;
   if (/^\d{5}$/.test(trimmed)) return false;
-  const hay = `${listing.address} ${listing.city} ${listing.zip} ${listing.mls} ${listing.id} ${boxSerial(listing)}`.toLowerCase();
+  const agent = ramcoMemberForListing(listing);
+  const hay = `${listing.address} ${listing.city} ${listing.zip} ${listing.mls} ${listing.id} ${boxSerial(listing)} ${agent.name} ${agent.officeName} ${agent.nrdsId}`.toLowerCase();
   return hay.includes(trimmed.toLowerCase());
 }
 

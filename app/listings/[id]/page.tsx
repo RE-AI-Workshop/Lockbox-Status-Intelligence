@@ -4,6 +4,7 @@ import { AnonymousPeers } from "@/components/AnonymousPeers";
 import { BackLink } from "@/components/BackLink";
 import { LiveLockBadge } from "@/components/LiveLockBadge";
 import { LockboxPanel } from "@/components/LockboxPanel";
+import { RamcoMemberCard } from "@/components/RamcoMemberCard";
 import { DemandPill, FeedbackChip, HealthMark, MetroChip, PageKicker, StatusBadge } from "@/components/ui";
 import { allExploreListings, getListing } from "@/lib/data";
 import { formatCurrency, formatDate, formatDateTime } from "@/lib/format";
@@ -74,6 +75,8 @@ export default async function ListingDetailPage({
           </Link>
         </div>
       </div>
+
+      <RamcoMemberCard listing={listing} />
 
       <section className="grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className="kpi-card">
@@ -156,9 +159,9 @@ export default async function ListingDetailPage({
         </div>
 
         <div id="comps" className="panel p-6">
-          <h2 className="section-title">Similar listings</h2>
+          <h2 className="section-title">Comps</h2>
           <p className="mt-1 text-sm text-[var(--muted)]">
-            Homes with a similar price. Compare showings. Use Open only if you want that listing.
+            Homes priced like this one. Compare showing traffic. Open a comp only if you want that listing.
           </p>
           <ul className="mt-5 space-y-3 text-sm">
             {comps.map((comp) => {

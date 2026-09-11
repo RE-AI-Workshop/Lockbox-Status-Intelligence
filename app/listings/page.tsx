@@ -11,7 +11,7 @@ export default function ListingsPage() {
         <PageKicker>Listings</PageKicker>
         <h1 className="page-title">Browse lisitngs</h1>
         <p className="text-[var(--muted)]">
-          Pick a city first. Search by address, MLS, ZIP, or box number. Try 85016.
+          Pick a city first. Search by address, MLS, ZIP, box number, or listing agent. Try 85016.
         </p>
       </header>
       <ListingsExplorer listings={listings} />

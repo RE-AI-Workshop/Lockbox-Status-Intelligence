@@ -28,13 +28,14 @@ Do not restyle the whole app. Do not invent a new look.
 - Search empty state: "No listings match this search."
 - Sort control text must match the order of the Days to offer column.
 - Demand table rank 1 is the hottest ZIP. Map intensity in that row should match (High for rank 1). Clicking a row opens a detail panel above the table.
-- Anonymous peer set must not show street addresses or MLS numbers.
+- Comps must not show street addresses or MLS numbers until hover.
 - Each listing has a lockbox. Auto-lock follows listing status. Quiet hours and manual shutoff live on the listing.
 - Market “What’s here” shows listings, open boxes, and watchlist locked, and links to Boxes.
 - Conversions keeps the three rate cards and N-showing chart. A “When the box should lock” strip sits with the rates.
 - Demand keeps ZIP rank, map intensity from score, and High / Medium / Low thresholds. Table rows and map dots select the same ZIP. City chips should filter both.
 - Listings table includes a Box column (serial + live lock chip). Empty state colspan is 7.
-- Listing detail order: header (status, lock chip, serial) → KPIs → Showings and offers | Similar listings → lockbox controls → anonymous peers.
+- Listing detail order: header (status, lock chip, serial) → listing agent (RAMCO) → KPIs → Showings and offers | Comps → lockbox controls → comps (addresses hidden until hover).
+- Listing agent is a mock RAMCO member: name, NRDS ID, join date, license, office, association, and a Connected badge with the RAMCO mark. Listings table may show the agent name under the address.
 
 ## What not to change
 

@@ -12,6 +12,20 @@ import {
 } from "@/lib/lockbox";
 import type { Listing, ListingStatus } from "@/lib/types";
 import { LockModeBadge } from "./LockModeBadge";
+import { StatusBadge } from "./ui";
+
+const STATUS_MEANING: Record<ListingStatus, string> = {
+  Active: "On market. Buyers can still tour.",
+  Pending: "Under contract. A buyer is in play.",
+  Sold: "Closed. This one is done.",
+  Withdrawn: "Pulled off the market.",
+};
+
+const AUTO_LOCK_HINT: Record<(typeof MLS_LOCK_STATUSES)[number], string> = {
+  Pending: "When checked, lock the box as soon as the listing goes under contract.",
+  Sold: "When checked, lock the box after closing so nobody can still get in.",
+  Withdrawn: "When checked, lock the box if the listing is pulled off market.",
+};
 
 function loadPolicy(listingId: string): LockPolicy {
   return readLockPolicy(listingId) ?? DEFAULT_LOCK_POLICY;
@@ -44,6 +58,11 @@ export function LockboxPanel({ listing }: { listing: Listing }) {
         <div>
           <p className="kicker">Lockbox</p>
           <h2 className="stat mt-1 text-[1.45rem]">{box.serial}</h2>
+          <p className="mt-2 flex flex-wrap items-center gap-2 text-sm">
+            <span className="text-[var(--muted)]">This listing is</span>
+            <StatusBadge status={listing.status} />
+            <span className="text-[var(--muted)]">{STATUS_MEANING[listing.status]}</span>
+          </p>
           <p className="mt-2 max-w-2xl text-sm text-[var(--muted)]">{box.modeReason}</p>
         </div>
         <div className="text-right">
@@ -57,33 +76,48 @@ export function LockboxPanel({ listing }: { listing: Listing }) {
 
       <div className="mt-5 grid gap-6 border-t border-[var(--line)] pt-5 lg:grid-cols-2">
         <fieldset className="space-y-3">
-          <legend className="text-sm font-medium">Lock the box when status is</legend>
+          <legend className="text-sm font-medium">Lock the box when the listing becomes</legend>
           <p className="text-xs text-[var(--muted)]">
-            Pending or Sold should lock the box so the next showing cannot open it.
+            These checkboxes are the rule, not the current status. Check a status to auto-lock the box when the MLS
+            listing hits it. Unchecked means showings can still open the box at that status.
           </p>
-          <div className="flex flex-wrap gap-3">
-            {MLS_LOCK_STATUSES.map((status) => (
-              <label key={status} className="flex items-center gap-2 text-sm">
-                <input
-                  type="checkbox"
-                  checked={policy.autoLockOn.includes(status)}
-                  onChange={() => toggleStatus(status)}
-                />
-                {status}
-              </label>
-            ))}
+          <div className="space-y-2.5">
+            {MLS_LOCK_STATUSES.map((status) => {
+              const isCurrent = listing.status === status;
+              return (
+                <label key={status} className="flex items-start gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    className="mt-0.5"
+                    checked={policy.autoLockOn.includes(status)}
+                    onChange={() => toggleStatus(status)}
+                  />
+                  <span>
+                    {status}
+                    {isCurrent ? <span className="ml-2 text-xs font-medium text-[var(--accent)]">This listing</span> : null}
+                    <span className="mt-0.5 block text-xs text-[var(--muted)]">{AUTO_LOCK_HINT[status]}</span>
+                  </span>
+                </label>
+              );
+            })}
           </div>
         </fieldset>
 
         <div className="space-y-3">
           <p className="text-sm font-medium">Quiet hours and off</p>
-          <label className="flex items-center gap-2 text-sm">
+          <label className="flex items-start gap-2 text-sm">
             <input
               type="checkbox"
+              className="mt-0.5"
               checked={policy.quietEnabled}
               onChange={(event) => update({ ...policy, quietEnabled: event.target.checked })}
             />
-            Quiet hours (uses this computer&apos;s clock)
+            <span>
+              Quiet hours
+              <span className="mt-0.5 block text-xs text-[var(--muted)]">
+                When checked, the box will not open during these hours (this computer&apos;s clock).
+              </span>
+            </span>
           </label>
           <div className="flex flex-wrap items-end gap-3">
             <label className="text-sm">
@@ -118,9 +152,9 @@ export function LockboxPanel({ listing }: { listing: Listing }) {
               onChange={(event) => update({ ...policy, manualShutoff: event.target.checked })}
             />
             <span>
-              Manual shutoff
+              Shut the box off now
               <span className="mt-0.5 block text-xs text-[var(--muted)]">
-                Turn the box off now, even if the listing is still Active.
+                Overrides listing status. Use this if you need it locked while the listing is still Active.
               </span>
             </span>
           </label>

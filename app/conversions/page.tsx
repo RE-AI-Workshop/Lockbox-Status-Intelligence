@@ -123,12 +123,12 @@ export default function ConversionsPage() {
           <div>
             <h2 className="section-title">Chance of an offer after more showings</h2>
             <p className="mt-1 text-sm text-[var(--muted)]">
-              Each bar is the share of listings with more than N showings that later recorded an offer.
+              Each bar is listings that had more than this many showings and later got an offer.
             </p>
           </div>
         </div>
-        <div className="mt-6 grid grid-cols-[4.5rem_1fr_4.5rem] gap-3 text-xs font-medium text-[var(--muted)]">
-          <span />
+        <div className="mt-6 grid grid-cols-[7.5rem_1fr_4.5rem] gap-3 text-xs font-medium text-[var(--muted)]">
+          <span>Showings</span>
           <div className="flex justify-between">
             <span>0%</span>
             <span>50%</span>
@@ -138,8 +138,10 @@ export default function ConversionsPage() {
         </div>
         <div className="mt-2 space-y-3.5">
           {aggregates.pOfferAfterN.map((point) => (
-            <div key={point.n} className="grid grid-cols-[4.5rem_1fr_4.5rem] items-center gap-3 text-sm">
-              <span className="text-[var(--muted)]">N={point.n}</span>
+            <div key={point.n} className="grid grid-cols-[7.5rem_1fr_4.5rem] items-center gap-3 text-sm">
+              <span className="text-[var(--muted)]">
+                {point.n} {point.n === 1 ? "showing" : "showings"}
+              </span>
               <div className="relative h-2.5 overflow-hidden rounded-full bg-[var(--bg-soft)]">
                 <div
                   className="h-2.5 rounded-full"

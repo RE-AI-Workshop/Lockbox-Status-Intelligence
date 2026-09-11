@@ -72,13 +72,13 @@ export function resolveLockMode(
   if (policy.manualShutoff) {
     return {
       mode: "manual-off",
-      reason: "You turned this box off. It will not open until you uncheck Manual shutoff.",
+      reason: "You shut this box off. It will not open until you uncheck Shut the box off now.",
     };
   }
   if (policy.autoLockOn.includes(listing.status)) {
     return {
       mode: "auto-locked",
-      reason: `This box is locked because the listing is ${listing.status}. It will not open for a showing.`,
+      reason: `Listing status is ${listing.status}, and that status is checked below, so the box stays locked. It will not open for a showing.`,
     };
   }
   if (policy.quietEnabled && inQuietHours(now, policy.quietStart, policy.quietEnd)) {
@@ -89,7 +89,7 @@ export function resolveLockMode(
   }
   return {
     mode: "available",
-    reason: "This box will open for a showing.",
+    reason: `Listing status is ${listing.status}. None of the checked statuses below match, so the box will open for a showing.`,
   };
 }
 
