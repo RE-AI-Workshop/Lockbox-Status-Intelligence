@@ -284,6 +284,7 @@ li:last-child .watch-card {
 }
 
 .badge-Withdrawn,
+.badge-ramco-inactive,
 .lock-manual-off {
   color: #b91c1c;
   background: rgba(220, 53, 69, 0.08);

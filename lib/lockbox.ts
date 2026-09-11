@@ -31,7 +31,7 @@ export const DEFAULT_LOCK_POLICY: LockPolicy = {
   manualShutoff: false,
 };
 
-export const MLS_LOCK_STATUSES: ListingStatus[] = ["Pending", "Sold", "Withdrawn"];
+export const MLS_LOCK_STATUSES = ["Pending", "Sold", "Withdrawn"] as const;
 
 const POLICY_PREFIX = "throughline.lock.";
 

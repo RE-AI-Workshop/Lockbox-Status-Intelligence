@@ -1,3 +1,4 @@
+import { RamcoStatusBadge } from "@/components/ui";
 import { formatDate } from "@/lib/format";
 import { ramcoMemberForListing } from "@/lib/ramco";
 import type { Listing } from "@/lib/types";
@@ -23,15 +24,25 @@ export function RamcoMemberCard({ listing }: { listing: Listing }) {
           <span className="text-xs font-semibold text-[var(--ok)]">Connected</span>
         </div>
       </div>
-      <h2 className="stat mt-3 text-[1.45rem]">
+      <h2 className={`stat mt-3 text-[1.45rem] ${member.status === "Inactive" ? "text-[var(--danger)]" : ""}`}>
         {member.name}, {member.memberType}
       </h2>
       <p className="mt-2 max-w-2xl text-sm text-[var(--muted)]">
         {member.officeName} · {member.primaryAssociation}
       </p>
+      {member.status === "Inactive" ? (
+        <p className="mt-2 text-sm text-[var(--danger)]" title="RAMCO says inactive">
+          RAMCO says this member is inactive.
+        </p>
+      ) : null}
 
       <div className="mt-5 grid gap-4 border-t border-[var(--line)] pt-5 sm:grid-cols-2 lg:grid-cols-4">
-        <Field label="Member status" value={member.status} />
+        <div>
+          <p className="kicker">Member status</p>
+          <div className="mt-1">
+            <RamcoStatusBadge status={member.status} />
+          </div>
+        </div>
         <Field label="NRDS ID" value={member.nrdsId} />
         <Field label="Member join date" value={formatDate(member.joinedAt)} />
         <Field label="License" value={member.licenseNumber} />

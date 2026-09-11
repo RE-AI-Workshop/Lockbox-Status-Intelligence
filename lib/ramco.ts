@@ -1,9 +1,12 @@
+import rosterJson from "@/data/ramco-members.json";
 import type { Listing, Metro } from "./types";
+
+export type RamcoMemberStatus = "Active" | "Inactive";
 
 export interface RamcoMember {
   name: string;
   memberType: "REALTOR";
-  status: "Active";
+  status: RamcoMemberStatus;
   nrdsId: string;
   joinedAt: string;
   licenseNumber: string;
@@ -17,6 +20,11 @@ export interface RamcoMember {
   designations: string[];
   duesPaidThrough: string;
   lastSyncedAt: string;
+}
+
+export interface RamcoRosterFile {
+  generatedAt: string;
+  members: Record<string, RamcoMember>;
 }
 
 const FIRST_NAMES = [
@@ -101,7 +109,7 @@ function pad(value: number, width: number): string {
   return String(value).padStart(width, "0");
 }
 
-export function ramcoMemberForListing(listing: Listing): RamcoMember {
+export function buildRamcoMember(listing: Listing): RamcoMember {
   const seed = hashString(listing.id);
   const first = pick(FIRST_NAMES, seed, 7);
   const last = pick(LAST_NAMES, seed, 13);
@@ -121,7 +129,7 @@ export function ramcoMemberForListing(listing: Listing): RamcoMember {
   return {
     name: `${first} ${last}`,
     memberType: "REALTOR",
-    status: "Active",
+    status: seed % 13 === 0 ? "Inactive" : "Active",
     nrdsId: pad(100000000 + (seed % 800000000), 9),
     joinedAt: `${joinYear}-${pad(joinMonth, 2)}-${pad(joinDay, 2)}T12:00:00.000Z`,
     licenseNumber: `${licenseState} ${650000 + (seed % 249999)}`,
@@ -136,4 +144,10 @@ export function ramcoMemberForListing(listing: Listing): RamcoMember {
     duesPaidThrough: "2026-12-31T12:00:00.000Z",
     lastSyncedAt: "2026-09-10T14:22:00.000Z",
   };
+}
+
+const roster = rosterJson as RamcoRosterFile;
+
+export function ramcoMemberForListing(listing: Listing): RamcoMember {
+  return roster.members[listing.id] ?? buildRamcoMember(listing);
 }

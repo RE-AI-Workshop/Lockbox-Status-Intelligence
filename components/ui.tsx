@@ -1,3 +1,4 @@
+import type { RamcoMemberStatus } from "@/lib/ramco";
 import type { DemandLevel, Listing } from "@/lib/types";
 
 export function PageKicker({ children }: { children: React.ReactNode }) {
@@ -6,6 +7,17 @@ export function PageKicker({ children }: { children: React.ReactNode }) {
 
 export function StatusBadge({ status }: { status: Listing["status"] }) {
   return <span className={`badge badge-${status}`}>{status}</span>;
+}
+
+export function RamcoStatusBadge({ status }: { status: RamcoMemberStatus }) {
+  if (status === "Inactive") {
+    return (
+      <span className="badge badge-ramco-inactive" title="RAMCO says inactive">
+        Inactive
+      </span>
+    );
+  }
+  return <span className="badge badge-Active">Active</span>;
 }
 
 export function DemandPill({ level }: { level: DemandLevel }) {

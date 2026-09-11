@@ -11,6 +11,7 @@
     "start": "next start",
     "lint": "eslint",
     "generate": "npx tsx scripts/generate-market.ts",
+    "generate:ramco": "npx tsx scripts/generate-ramco.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test"

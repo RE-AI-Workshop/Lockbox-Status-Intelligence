@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { LiveLockBadge } from "@/components/LiveLockBadge";
-import { StatusBadge } from "@/components/ui";
+import { RamcoStatusBadge, StatusBadge } from "@/components/ui";
 import { formatCurrency } from "@/lib/format";
 import { compareDaysToOffer, daysShowingToOffer, isActiveStatus, matchesQuery } from "@/lib/intelligence";
 import { boxSerial } from "@/lib/lockbox";
@@ -96,8 +96,14 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
                     <Link href={listingPath(listing.id, "listings")} className="block whitespace-nowrap hover:text-[var(--accent)]">
                       {listing.address}
                     </Link>
-                    <p className="mt-1 text-xs text-[var(--muted)]">
-                      {agent.name}, REALTOR · {agent.officeName}
+                    <p className="mt-1.5 flex flex-wrap items-center gap-2 text-xs">
+                      <span
+                        className={agent.status === "Inactive" ? "font-medium text-[var(--danger)]" : "text-[var(--muted)]"}
+                        title={agent.status === "Inactive" ? "RAMCO says inactive" : undefined}
+                      >
+                        {agent.name}, REALTOR
+                      </span>
+                      <RamcoStatusBadge status={agent.status} />
                     </p>
                   </td>
                   <td className="tabular text-[var(--muted)]">{listing.zip}</td>

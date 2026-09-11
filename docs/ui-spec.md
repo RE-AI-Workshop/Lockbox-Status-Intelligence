@@ -35,7 +35,7 @@ Do not restyle the whole app. Do not invent a new look.
 - Demand keeps ZIP rank, map intensity from score, and High / Medium / Low thresholds. Table rows and map dots select the same ZIP. City chips should filter both.
 - Listings table includes a Box column (serial + live lock chip). Empty state colspan is 7.
 - Listing detail order: header (status, lock chip, serial) → listing agent (RAMCO) → KPIs → Showings and offers | Comps → lockbox controls → comps (addresses hidden until hover).
-- Listing agent is a mock RAMCO member: name, NRDS ID, join date, license, office, association, and a Connected badge with the RAMCO mark. Listings table may show the agent name under the address.
+- Listing agent is a mock RAMCO member stored in `data/ramco-members.json`: name, member status, NRDS ID, join date, license, office, association, and a Connected badge with the RAMCO mark. Listings table shows the agent name and RAMCO member status under the address. Inactive members are red; hover says “RAMCO says inactive.” The same roster record is used on the list and the listing.
 
 ## What not to change
 
