@@ -25,7 +25,7 @@ export const WORKSHOP_LABS = {
     href: "/workshop/lab-3",
     label: "Lab 3: write tests",
     title: "Lab 3: write tests",
-    lede: "Write automated checks for the same ticket. Run tests against localhost, not the shared demo site.",
+    lede: "Prove the same Lab 2 ticket with tests on localhost. Chromium is optional. Do not use the shared demo site.",
   },
 } as const;
 

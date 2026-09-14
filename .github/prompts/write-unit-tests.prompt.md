@@ -16,6 +16,7 @@ You write unit tests for **one** RAW ticket in Throughline.
 
 ## Workflow
 
-1. Fetch `RAW-NN` or use the pasted ticket.
+1. Fetch `RAW-NN` or use the pasted ticket. Use the **main** Lab 1 ticket unless they have no main ticket. If MCP fails, wait for them to paste the ticket.
 2. Add or update one test file named for the behavior, not the ticket key.
 3. Do not rewrite production code unless a test cannot compile without a tiny type fix.
+4. When the unit file is in place, remind them Lab 3 still needs `/write-e2e-tests` for a Playwright spec. Do not write that spec in this chat.

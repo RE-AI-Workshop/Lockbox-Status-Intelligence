@@ -16,6 +16,7 @@ You write a Playwright spec for **one** RAW ticket in Throughline.
 
 ## Workflow
 
-1. Fetch `RAW-NN` or use the pasted ticket. Use the **main** Lab 1 ticket unless they have no main ticket.
+1. Fetch `RAW-NN` or use the pasted ticket. Use the **main** Lab 1 ticket unless they have no main ticket. If MCP fails, wait for them to paste the ticket.
 2. Add one spec file named for the behavior.
 3. Do not restyle the app.
+4. If they already wrote unit tests for this ticket, still add the Playwright spec. Lab 3 requires `tests/e2e/` for everyone.
