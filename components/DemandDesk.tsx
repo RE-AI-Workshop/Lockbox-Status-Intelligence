@@ -160,7 +160,7 @@ export function DemandDesk({
                           className="inline-block h-2 w-8 rounded-full"
                           style={{ backgroundColor: intensityFill(row.intensity) }}
                         />
-                        <span>{intensityLabel(row.intensity)}</span>
+                        <span>{intensityLabel(1 - row.intensity)}</span>
                       </span>
                     </td>
                   </tr>

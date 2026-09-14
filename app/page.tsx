@@ -83,7 +83,7 @@ export default function MarketPage() {
         />
         <KpiCard
           label="Median days to offer"
-          value={`${Math.round(aggregates.medianDaysToOffer)}`}
+          value={`${Math.round(aggregates.medianDaysToOffer * 7)}`}
           hint="From list date to first offer"
         />
         <KpiCard

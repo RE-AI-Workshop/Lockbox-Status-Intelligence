@@ -8,7 +8,7 @@ You can pair up, but everyone should stay on their own laptop if they can.
 
 | Lab | You use | You do not need yet |
 | --- | --- | --- |
-| Prerequisites | Throughline, Cursor, RAW board | The GitHub repo |
+| Prerequisites | Throughline, Cursor, RAW board | Clone is optional homework for Lab 2 |
 | Lab 1 | Live site + Cursor + Jira | The GitHub repo |
 | Lab 2 | GitHub repo on your machine | A deploy |
 | Lab 3 | Same repo + your Lab 1 ticket | A deploy |
@@ -17,7 +17,7 @@ Fixes stay local in Lab 2 and Lab 3. Do not push or redeploy the shared demo sit
 
 ## Start here
 
-1. [Prerequisites](00-prerequisites.md) (10 to 15 minutes, or homework before the session)
+1. [Prerequisites](00-prerequisites.md) (10 to 15 minutes, or homework before the session; clone is optional at the bottom)
 2. [Lab 1: file one ticket](01-jira-lab.md)
 3. [Lab 2: implement the ticket](02-dev-lab.md)
 4. [Lab 3: write tests](03-qa-lab.md)
