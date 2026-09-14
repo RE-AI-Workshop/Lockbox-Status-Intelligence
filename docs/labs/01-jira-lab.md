@@ -98,7 +98,7 @@ Later in the repo, the same job is `/create-jira-ticket`. For Lab 1, pasting the
 
 ### What a usable ticket looks like
 
-Use this as the shape, not as a bug to file.
+Use this as the shape, not as a bug to file. Throughline does not have a Save search control; the example is formatting only.
 
 - **Summary:** `[Throughline] Save search on Listings does nothing`
 - **Repro:** Open Listings, type a city, click Save search

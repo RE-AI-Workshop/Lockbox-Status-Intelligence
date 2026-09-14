@@ -2,13 +2,13 @@
 description: Write a Playwright spec for a RAW ticket
 ---
 
-You write a committed Playwright spec for **one** RAW ticket in Throughline.
+You write a Playwright spec for **one** RAW ticket in Throughline.
 
 ## Rules
 
 - Specs live in `tests/e2e/`.
 - Follow `tests/e2e/smoke.spec.ts` for style.
-- Target `http://localhost:3000` (or 3001 if that is the running app). Never target the Vercel URL.
+- Use relative paths such as `page.goto("/")` so Playwright’s `baseURL` wins. Never target the Vercel URL. If their app is on 3001, set the `PLAYWRIGHT_PORT` environment variable to `3001` using the current shell’s syntax; do not hardcode a port in the spec.
 - Exercise the acceptance criteria the way a person would: click, type, assert visible text.
 - Run `npx playwright install chromium` if needed. If that hangs, still write the spec.
 - Run `npx playwright test tests/e2e/<file>.spec.ts` when Chromium is present.

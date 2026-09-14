@@ -123,7 +123,7 @@ export default function ConversionsPage() {
           <div>
             <h2 className="section-title">Chance of an offer after more showings</h2>
             <p className="mt-1 text-sm text-[var(--muted)]">
-              Each bar is listings that had more than this many showings and later got an offer.
+              Each bar is listings that had at least this many showings and later got an offer.
             </p>
           </div>
         </div>

@@ -13,3 +13,4 @@ dist
 docs/facilitator/
 playwright-report
 test-results
+*.tsbuildinfo

@@ -31,12 +31,12 @@ If this hangs for more than 2 minutes, stop the download. You can still write th
 
 | Your ticket was about… | Start with | Then |
 | --- | --- | --- |
-| A formula, rate, comps, demand math, or lock chip sync | `.github/prompts/write-unit-tests.prompt.md` | Playwright spec |
-| Filters, search, sort, labels, map chips, tooltips, detail panel | `.github/prompts/write-e2e-tests.prompt.md` | Unit tests optional |
+| A formula, rate, comparable-listing selection, or demand math | `.github/prompts/write-unit-tests.prompt.md` | Playwright spec |
+| Filters, search, sort, labels, headings, copy, map chips, lock chips, tooltips, or detail layout | `.github/prompts/write-e2e-tests.prompt.md` | Unit tests optional |
 
 Shortcuts: `/write-unit-tests` and `/write-e2e-tests`.
 
-Tell the agent your main `RAW-NN`. Tests must hit **localhost**, never the shared Vercel URL.
+Tell the agent your main `RAW-NN`. Specs should use relative paths (`/`, `/listings`) so they hit the local app, never Vercel. Playwright reuses the local server on port 3000. If your server is on 3001, set `PLAYWRIGHT_PORT=3001` when you run Playwright.
 
 ## 3. Run what you can
 
@@ -50,6 +50,18 @@ Your Playwright spec (after Chromium is installed):
 
 ```bash
 npx playwright test tests/e2e/YOUR_FILE.spec.ts
+```
+
+On macOS, Linux, or Git Bash with the app on port 3001:
+
+```bash
+PLAYWRIGHT_PORT=3001 npx playwright test tests/e2e/YOUR_FILE.spec.ts
+```
+
+On Windows PowerShell with the app on port 3001:
+
+```powershell
+$env:PLAYWRIGHT_PORT=3001; npx playwright test tests/e2e/YOUR_FILE.spec.ts
 ```
 
 Follow the style in `tests/unit/example-format.test.ts` and `tests/e2e/smoke.spec.ts`.

@@ -87,7 +87,7 @@ You are ready for Lab 1.
 
 ## Optional: clone before Lab 2 (devs and QA)
 
-Skip this block if you do not have Node **20** or newer, or if you are only doing Lab 1 today. Lab 2 still walks through clone and `npm install`. Doing it now only saves clock time.
+Skip this block if you do not have Node **20.19+** (recommended), Node 22.12+, or Node 24+, or if you are only doing Lab 1 today. Lab 2 still walks through clone and `npm install`. Doing it now only saves clock time.
 
 Do **not** open application source and hunt bugs. Lab 1 is a look-at-the-live-site lab.
 
@@ -97,7 +97,7 @@ Do **not** open application source and hunt bugs. Lab 1 is a look-at-the-live-si
 node -v
 ```
 
-> **Expected:** `v20` or newer. If you are on 16 or 18, stop here. Pair in Lab 2. Do not spend this homework installing Node.
+> **Expected:** Node 20.19+ (recommended), 22.12+, or 24+. If you are on 16, 18, 21, 23, or an older 20/22 release, stop here and pair in Lab 2. Do not spend this homework installing Node.
 
 2. Clone and open the repo root in Cursor (**File > Open Folder** on `Lockbox-Status-Intelligence`, not a parent folder):
 
@@ -121,7 +121,7 @@ Open http://127.0.0.1:3000. You should see Throughline. Then stop the server (`C
 
 #### If this did not work
 
-- Port 3000 busy: `npm run dev -- --port 3001`.
+- Port 3000 busy: open http://127.0.0.1:3000 first. Reuse it if Throughline is already there. Stop an old broken Throughline terminal before restarting; use `npm run dev -- --port 3001` only if another app owns port 3000.
 - `npm install` fails or hangs more than a couple of minutes: stop. Pair in Lab 2. Do not chase wifi certificates.
 - Do not run `npm run generate`. Do not push. Do not deploy.
 

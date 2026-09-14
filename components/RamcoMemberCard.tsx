@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { RamcoStatusBadge } from "@/components/ui";
 import { formatDate } from "@/lib/format";
 import { ramcoMemberForListing } from "@/lib/ramco";
@@ -20,7 +21,7 @@ export function RamcoMemberCard({ listing }: { listing: Listing }) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="kicker">Listing agent</p>
         <div className="flex shrink-0 items-center gap-2 rounded-[var(--radius)] border border-[var(--line)] bg-[var(--bg-soft)] px-2.5 py-1.5">
-          <img src="/ramco-logo.png" alt="RAMCO" width={88} height={23} className="h-6 w-auto" />
+          <Image src="/ramco-logo.png" alt="RAMCO" width={88} height={23} className="h-6 w-auto" />
           <span className="text-xs font-semibold text-[var(--ok)]">Connected</span>
         </div>
       </div>

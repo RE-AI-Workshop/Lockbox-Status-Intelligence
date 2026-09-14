@@ -9,7 +9,8 @@ You write unit tests for **one** RAW ticket in Throughline.
 - Tests live in `tests/unit/`.
 - Follow `tests/unit/example-format.test.ts` for style.
 - Label cases with `// AC:` matching the ticket acceptance criteria.
-- Test `lib/intelligence.ts` (or `lib/format.ts`) behavior. Do not test implementation comments.
+- Test `lib/intelligence.ts`, `lib/lockbox.ts`, or `lib/format.ts` behavior. Do not test implementation comments.
+- Lock-chip-after-policy-change is a Playwright case, not a unit case.
 - Run `npx vitest run`.
 - Red tests are a valid finish if the production fix is incomplete.
 

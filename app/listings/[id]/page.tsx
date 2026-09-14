@@ -128,7 +128,7 @@ export default async function ListingDetailPage({
           <h2 className="section-title">Showings and offers</h2>
           <p className="mt-1 text-sm text-[var(--muted)]">
             What happened on this home, in order. Listed {formatDate(listing.listedAt)}
-            {days ? ` · Days to offer: ${days}` : ""}
+            {days !== null ? ` · Days to offer: ${days}` : ""}
             {` · ${listing.showings.length} ${listing.showings.length === 1 ? "showing" : "showings"} · ${listing.offers.length} ${listing.offers.length === 1 ? "offer" : "offers"}`}
           </p>
           <ol className="timeline mt-5 max-h-[28rem] space-y-3 overflow-auto pr-1 text-sm">

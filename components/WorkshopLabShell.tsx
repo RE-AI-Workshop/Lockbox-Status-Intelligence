@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LabOneHints } from "@/components/LabOneHints";
 import { WorkshopHeader } from "@/components/WorkshopHeader";
 import { WorkshopLabMarkdown } from "@/components/WorkshopLabMarkdown";
 import { WorkshopNav } from "@/components/WorkshopNav";
@@ -28,6 +29,8 @@ export function WorkshopLabShell({ labId }: { labId: WorkshopLabId }) {
         </section>
       ))}
 
+      {labId === "lab-1" ? <LabOneHints /> : null}
+
       <p className="text-xs text-[var(--muted)]">
         Same text lives in the repo under{" "}
         <Link
@@ -36,7 +39,7 @@ export function WorkshopLabShell({ labId }: { labId: WorkshopLabId }) {
         >
           docs/labs
         </Link>
-        . {labId === "lab-1" ? "Lab 2 and Lab 3" : "This lab"} still require a local clone to run code.
+        . A local clone is still required to run code in {labId === "lab-1" ? "Lab 2 and Lab 3" : "this lab"}.
       </p>
     </article>
   );

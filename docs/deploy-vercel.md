@@ -24,7 +24,7 @@ Throughline is a standard Next.js 15 app. No database or environment variables a
 | Build Command | `npm run build` |
 | Output Directory | Leave empty (default). Do not set `.next` or `out`. |
 | Install Command | `npm install` |
-| Node.js Version | 20.x (matches `.nvmrc` and `package.json` `engines`) |
+| Node.js Version | 20.x (20.19+; matches the recommended workshop runtime in `.nvmrc`) |
 
 4. **Environment Variables:** leave empty (none needed).
 5. Deploy production from `main`.

@@ -40,7 +40,7 @@ git clone https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence.git
 node -v
 ```
 
-> **Expected:** Version 20 or newer. If you are on 16 or 18, pair with someone on Node 20. Do not spend the lab installing Node unless a facilitator can help.
+> **Expected:** Node 20.19+ (recommended), 22.12+, or 24+. If you are on 16, 18, 21, 23, or an older 20/22 release, pair with someone on a supported version. Do not spend the lab installing Node unless a facilitator can help.
 
 ## 2. Connect Jira again (optional)
 
@@ -76,7 +76,7 @@ Open http://127.0.0.1:3000. You should see the Throughline Market page.
 
 ### If this did not work
 
-- Port 3000 busy: run `npm run dev -- --port 3001` and use http://127.0.0.1:3001 for the rest of the lab.
+- Port 3000 busy: open http://127.0.0.1:3000 first. If Throughline loads, reuse it. If an old Throughline terminal is broken, stop it with `Ctrl+C` and restart. Use `npm run dev -- --port 3001` only when another app owns port 3000.
 - `npm install` fails: pair on a machine that already runs. Do not debug npm for more than 2 minutes.
 - Blank page: check the terminal for a compile error and raise a hand.
 
@@ -98,7 +98,7 @@ Shortcuts: `/fix-backend` or `/fix-frontend`. If slash commands do not load, pas
 
 4. Tell the agent your ticket key and that localhost is running.
 
-**Backend** work lives in `lib/intelligence.ts` and data helpers. Do not restyle the app.
+**Backend** work lives in `lib/intelligence.ts`, `lib/lockbox.ts`, and data helpers. Filter, search, and sort tickets are Backend. Do not restyle the app. Do not push generated JSON.
 
 **Frontend** work lives in `app/` and `components/`. Read `docs/ui-spec.md` first. The agent should verify in the browser when it can.
 
@@ -109,6 +109,7 @@ Fix only what your ticket asks for. Do not chase other bugs.
 - Chat flipped to Plan: switch back to Agent, or paste the prompt file again.
 - Agent edited the wrong layer: stop it. Formulas go to the backend prompt. Visible UI goes to the frontend prompt.
 - Not sure the fix worked: click the same path you used in Lab 1 on **localhost**, not on Vercel.
+- The existing smoke test expects the misspelled Listings heading. If your ticket is that typo, update `tests/e2e/smoke.spec.ts` in the same change or wait for Lab 3.
 
 ## Done when
 

@@ -19,7 +19,7 @@ You are preparing **Throughline** for production on Vercel. A human will connect
 
 ## Do not regenerate market data
 
-**Never run `npm run generate` for a Vercel prep.** Lab 1 depends on fixed counts (homepage showing-to-offer **24.6%**, Conversions **28.0%**, 50k listings). Regenerating will change those numbers.
+**Never run `npm run generate` for a Vercel prep.** Lab 1 depends on fixed counts (homepage showing-to-offer **24.6%**, Conversions **28.0%**, Market median days **91**, 50k listings). Regenerating will change those numbers.
 
 ## Vercel settings (tell the human)
 
@@ -32,7 +32,7 @@ When they import the repo in Vercel:
 | Build Command | `npm run build` (default) |
 | Output Directory | **Leave empty** (default). Do not set to `.next` or `out`. Vercel uses the Next.js builder. |
 | Install Command | `npm install` (default) |
-| Node.js Version | **20.x** (matches `.nvmrc` and `package.json` `engines`) |
+| Node.js Version | **20.x** (20.19+; matches the recommended workshop runtime in `.nvmrc`) |
 
 **Environment variables:** none required for this demo. No database, no API keys in the app. Do not add `JIRA_API_TOKEN` or other workshop secrets to Vercel.
 
@@ -65,7 +65,7 @@ Tell attendees Lab 1 uses the Vercel URL; Lab 2 and 3 stay local only.
 
 ## If build fails on Vercel but passes locally
 
-- Check Node version is 20+ in Vercel project settings.
+- Check Node version is 20.x in Vercel project settings.
 - Ensure `data/explore.json` and `data/aggregates.json` are in the repo (not gitignored).
 - Read the Vercel build log; fix TypeScript or import errors only. Do not refactor unrelated code.
 

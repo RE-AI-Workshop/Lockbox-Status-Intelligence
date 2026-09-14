@@ -10,7 +10,7 @@ This repo is the **workshop demo**. There is no login, no database, and no live 
 | --- | --- |
 | See the product | Open the [live app](https://lockbox-status-intelligence.vercel.app). You do not need to clone. |
 | Take the SentriLock workflow | Download [share/SentriLock-Workflow-Kit.zip](share/SentriLock-Workflow-Kit.zip). Unzip it and read **that** folder’s `README.md`. |
-| Do the workshop labs | Use the live app for Lab 1. Clone this repo only for Lab 2 and Lab 3. Sheets: [docs/labs/README.md](docs/labs/README.md). |
+| Do the workshop labs | Use the live app for Lab 1. Clone this repo only for Lab 2 and Lab 3. Lab docs: [docs/labs/README.md](docs/labs/README.md). |
 
 The zip is a reusable ticket-to-handoff workflow for VS Code Copilot and Cursor. Configure it per SentriLock repository. It is not installed in Throughline and does not replace the labs.
 
@@ -46,7 +46,7 @@ Fixes stay **local**. Do not push or redeploy the shared demo.
 
 ## Run locally (Lab 2 and Lab 3)
 
-Node **20** or newer (see `.nvmrc`).
+Node **20.19+** is recommended (see `.nvmrc`). Node 22 requires 22.12+; Node 24+ also works.
 
 ```bash
 git clone https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence.git
@@ -55,7 +55,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000. If that port is busy: `npm run dev -- --port 3001`.
+Open http://127.0.0.1:3000. If Throughline is already running there, reuse it. If another app owns that port, run `npm run dev -- --port 3001`.
 
 Same commands work in Windows PowerShell.
 
@@ -69,7 +69,9 @@ Same commands work in Windows PowerShell.
 
 ## Jira in Cursor
 
-Copy `.cursor/mcp.json.example` to `.cursor/mcp.json` and add your Atlassian email and API token. Never commit the filled file.
+Lab 1 does not need a clone. Follow [docs/labs/00-prerequisites.md](docs/labs/00-prerequisites.md): Cursor **Settings → MCP**, paste the JSON, then smoke-test `List issues in project RAW`.
+
+After you clone for Lab 2, you can instead copy `.cursor/mcp.json.example` to `.cursor/mcp.json`. Never commit the filled file.
 
 ## Deploy
 
