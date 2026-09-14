@@ -10,6 +10,12 @@ import { WORKSHOP_LABS, type WorkshopLabId } from "@/lib/workshop-labs";
 export function WorkshopLabShell({ labId }: { labId: WorkshopLabId }) {
   const lab = WORKSHOP_LABS[labId];
   const { intro, sections } = parseLabMarkdown(readLabMarkdown(lab.file));
+  const cloneNote =
+    labId === "prerequisites"
+      ? "Lab 1 uses the live site; the clone section above is optional preparation for Lab 2."
+      : labId === "lab-1"
+        ? "A local clone is still required to run code in Lab 2 and Lab 3."
+        : "A local clone is still required to run code in this lab.";
 
   return (
     <article className="mx-auto max-w-3xl space-y-8">
@@ -39,7 +45,7 @@ export function WorkshopLabShell({ labId }: { labId: WorkshopLabId }) {
         >
           docs/labs
         </Link>
-        . A local clone is still required to run code in {labId === "lab-1" ? "Lab 2 and Lab 3" : "this lab"}.
+        . {cloneNote}
       </p>
     </article>
   );

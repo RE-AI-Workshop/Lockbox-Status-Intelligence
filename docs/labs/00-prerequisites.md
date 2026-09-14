@@ -1,12 +1,12 @@
 # Prerequisites
 
-Do this before Lab 1 if you can. About 10 to 15 minutes.
+Do this before Lab 1 if you can. The required path takes about 5 minutes. Jira-in-Cursor setup may take another 5 to 10.
 
-By the end, you should be able to open Throughline, click **Create** on the RAW board, and either talk to Jira through Cursor or know you will paste a ticket by hand.
+By the end, you should be able to open Throughline and click **Create** on the RAW board. Connecting Jira to Cursor is recommended, but the RAW Create screen is a complete fallback.
 
 Set the Cursor chat to **Agent**, not Plan or Ask.
 
-You do **not** need the GitHub repo for Lab 1. Clone is optional homework for Lab 2, at the bottom of this page.
+You do **not** need Node or the GitHub repo for Lab 1. Clone is optional homework for Lab 2, at the bottom of this page.
 
 ## Links
 
@@ -16,7 +16,7 @@ You do **not** need the GitHub repo for Lab 1. Clone is optional homework for La
 - Token help: https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/
 - Repo (Lab 2 and Lab 3 only): https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence
 
-## Required for Lab 1
+## Minimum setup for Lab 1
 
 ### 1. Cursor and a desktop browser
 
@@ -36,10 +36,21 @@ Open https://lockbox-status-intelligence.vercel.app. You should see the Market p
 
 > **Expected:** A create-issue form opens. If you can view the board but do not see **Create**, raise a hand. Do not spend the session fighting permissions.
 
+If the live app loads and RAW opens a Create form, you can complete Lab 1. Continue below to file through Cursor, or skip to Lab 1 and use the RAW form manually.
+
+---
+
+## Recommended: connect Jira to Cursor
+
+This path lets the Cursor agent search for duplicates and create your ticket. Stop after 2 minutes if it does not connect; do not let integration setup consume the lab.
+
+It uses `npx`. If `npx` is unavailable, skip this section. You do not need to install Node just for Lab 1.
+
 ### 4. Create an API token
 
 1. Open the token page. Sign in with the same Atlassian account that can see RAW.
 2. Create a token and copy it once. You will not see it again.
+3. Treat the token like a password. Do not paste it into chat, a Jira ticket, or a screenshot.
 
 ### 5. Add Jira to Cursor
 
@@ -79,9 +90,9 @@ In an Agent chat, ask:
 
 - Put the token in `JIRA_API_TOKEN`, not in `JIRA_URL`.
 - Use the Atlassian email for the account that can see RAW.
-- If Cursor never calls a Jira tool after 2 minutes, skip MCP for now. Lab 1 still counts if you create the issue in the RAW UI by hand.
+- If `npx` is missing or Cursor never calls a Jira tool after 2 minutes, stop setup. Lab 1 still counts when you create the issue in the RAW UI by hand.
 
-You are ready for Lab 1.
+You are ready for Lab 1 when the live app loads and either Cursor can list RAW issues or you can open RAW's Create form.
 
 ---
 

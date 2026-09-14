@@ -46,6 +46,17 @@ test("workshop is reachable from footer", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 });
 
+test("workshop prerequisites are available in their own tab", async ({ page }) => {
+  await page.goto("/workshop");
+  await page.getByRole("link", { name: "Prerequisites", exact: true }).click();
+
+  await expect(page).toHaveURL("/workshop/prerequisites");
+  await expect(page.getByRole("heading", { level: 1, name: "Prerequisites" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Minimum setup for Lab 1" })).toBeVisible();
+  await expect(page.getByText("The RAW Create screen is a complete fallback.")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Need a hint?" })).toHaveCount(0);
+});
+
 test("Lab 1 hints stay closed until opened", async ({ page }) => {
   await page.goto("/workshop");
 

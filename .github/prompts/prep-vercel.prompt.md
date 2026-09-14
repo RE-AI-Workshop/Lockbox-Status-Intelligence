@@ -59,7 +59,7 @@ If the URL changes, grep the repo and facilitator desktop pack for `lockbox-stat
 - `docs/labs/01-jira-lab.md`
 - Facilitator desktop pack (outside repo)
 
-Smoke-test production: `/`, `/conversions`, `/demand`, `/listings`, `/boxes`, `/workshop`.
+Smoke-test production: `/`, `/conversions`, `/demand`, `/listings`, `/boxes`, `/workshop/prerequisites`, `/workshop`, `/workshop/lab-2`, `/workshop/lab-3`.
 
 Tell attendees Lab 1 uses the Vercel URL; Lab 2 and 3 stay local only.
 

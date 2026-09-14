@@ -1,4 +1,11 @@
 export const WORKSHOP_LABS = {
+  prerequisites: {
+    file: "00-prerequisites.md",
+    href: "/workshop/prerequisites",
+    label: "Prerequisites",
+    title: "Prerequisites",
+    lede: "Confirm the live app and RAW access first. Jira in Cursor is recommended, with a manual fallback.",
+  },
   "lab-1": {
     file: "01-jira-lab.md",
     href: "/workshop",

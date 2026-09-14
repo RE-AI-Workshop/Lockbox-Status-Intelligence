@@ -57,7 +57,10 @@ Smoke-test:
    - `/demand`
    - `/listings`
    - `/boxes`
+   - `/workshop/prerequisites` — minimum setup and Jira connection
    - `/workshop` — Lab 1 instructions
+   - `/workshop/lab-2`
+   - `/workshop/lab-3`
 
 ## Redeploys
 

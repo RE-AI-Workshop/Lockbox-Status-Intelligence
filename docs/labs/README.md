@@ -29,6 +29,7 @@ If setup takes more than 2 minutes, use the bypass in that lab and keep moving.
 **Live app and workshop pages**
 
 - Throughline: https://lockbox-status-intelligence.vercel.app
+- Prerequisites: https://lockbox-status-intelligence.vercel.app/workshop/prerequisites
 - Lab 1: https://lockbox-status-intelligence.vercel.app/workshop
 - Lab 2: https://lockbox-status-intelligence.vercel.app/workshop/lab-2
 - Lab 3: https://lockbox-status-intelligence.vercel.app/workshop/lab-3

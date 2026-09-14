@@ -8,6 +8,8 @@ You do not need the GitHub repo for this lab.
 
 Set the Cursor chat to **Agent**, not Plan or Ask.
 
+Setup not finished? Open the [Prerequisites tab](https://lockbox-status-intelligence.vercel.app/workshop/prerequisites) before you start hunting.
+
 ## Links
 
 - Throughline: https://lockbox-status-intelligence.vercel.app

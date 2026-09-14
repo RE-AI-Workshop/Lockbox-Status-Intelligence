@@ -39,6 +39,7 @@ Fixes stay **local**. Do not push or redeploy the shared demo.
 | Lab 2 | This repo on your machine | A deploy |
 | Lab 3 | Same local repo + your Lab 1 ticket | A deploy |
 
+- Prerequisites: https://lockbox-status-intelligence.vercel.app/workshop/prerequisites
 - Lab 1: https://lockbox-status-intelligence.vercel.app/workshop
 - Lab 2: https://lockbox-status-intelligence.vercel.app/workshop/lab-2
 - Lab 3: https://lockbox-status-intelligence.vercel.app/workshop/lab-3
