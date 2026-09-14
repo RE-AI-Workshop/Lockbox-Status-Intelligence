@@ -40,7 +40,14 @@ git clone https://github.com/RE-AI-Workshop/Lockbox-Status-Intelligence.git
 node -v
 ```
 
-> **Expected:** Node 20.19+ (recommended), 22.12+, or 24+. If you are on 16, 18, 21, 23, or an older 20/22 release, pair with someone on a supported version. Do not spend the lab installing Node unless a facilitator can help.
+> **Expected:** Node 20.19+ (recommended), 22.12+, or 24+. If `node` is missing or the version is older, install 20.19:
+
+```bash
+nvm install 20.19
+nvm use 20.19
+```
+
+Then run `node -v` again. If you do not use nvm, install Node 20 LTS from https://nodejs.org and reopen the terminal.
 
 ## 2. Connect Jira again (optional)
 
