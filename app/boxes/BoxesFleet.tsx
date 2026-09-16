@@ -14,9 +14,28 @@ import {
 } from "@/lib/lockbox";
 import { METRO_ORDER, metroLabel } from "@/lib/metros";
 import { listingPath } from "@/lib/paths";
+import { ramcoMemberForListing } from "@/lib/ramco";
 import type { Listing, Metro } from "@/lib/types";
 
 const MODE_FILTERS: Array<LockboxMode | "ALL"> = ["ALL", "available", "quiet", "auto-locked", "manual-off"];
+
+function hashString(value: string): number {
+  let hash = 2166136261;
+  for (let i = 0; i < value.length; i += 1) {
+    hash ^= value.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
+/** Deterministic Owned (agent) vs Borrowed (office) for fleet display. */
+function lockboxOwnership(listing: Listing): { kind: "Owned" | "Borrowed"; owner: string } {
+  const member = ramcoMemberForListing(listing);
+  const owned = hashString(listing.id) % 3 !== 0;
+  return owned
+    ? { kind: "Owned", owner: member.name }
+    : { kind: "Borrowed", owner: member.officeName };
+}
 
 export function BoxesFleet({ listings }: { listings: Listing[] }) {
   const [metro, setMetro] = useState<Metro | "ALL">("ALL");
@@ -32,7 +51,11 @@ export function BoxesFleet({ listings }: { listings: Listing[] }) {
       .filter((listing) => (metro === "ALL" ? true : listing.metro === metro))
       .map((listing) => {
         const policy = useStored ? (readLockPolicy(listing.id) ?? DEFAULT_LOCK_POLICY) : DEFAULT_LOCK_POLICY;
-        return { listing, box: lockboxForListing(listing, policy) };
+        return {
+          listing,
+          box: lockboxForListing(listing, policy),
+          ownership: lockboxOwnership(listing),
+        };
       })
       .filter((row) => (mode === "ALL" ? true : row.box.mode === mode));
     return next;
@@ -80,12 +103,13 @@ export function BoxesFleet({ listings }: { listings: Listing[] }) {
               <th>Listing</th>
               <th>Listing status</th>
               <th>Lock</th>
+              <th>Lockbox Owner</th>
               <th>Last opened</th>
               <th>Battery</th>
             </tr>
           </thead>
           <tbody>
-            {rows.slice(0, 80).map(({ listing, box }) => (
+            {rows.slice(0, 80).map(({ listing, box, ownership }) => (
               <tr key={listing.id}>
                 <td className="tabular">
                   <Link href={listingPath(listing.id, "boxes", "lockbox")} className="block whitespace-nowrap hover:text-[var(--accent)]">
@@ -106,6 +130,12 @@ export function BoxesFleet({ listings }: { listings: Listing[] }) {
                 <td>
                   <LockModeBadge mode={box.mode} />
                 </td>
+                <td>
+                  <span className={`badge ${ownership.kind === "Owned" ? "badge-Active" : "pill-Moderate"}`}>
+                    {ownership.kind}
+                  </span>
+                  <p className="mt-1 text-xs text-[var(--muted)]">{ownership.owner}</p>
+                </td>
                 <td className="text-sm text-[var(--muted)]">
                   {box.lastAccessAt ? formatDateTime(box.lastAccessAt) : "—"}
                 </td>
@@ -114,7 +144,7 @@ export function BoxesFleet({ listings }: { listings: Listing[] }) {
             ))}
             {rows.length === 0 ? (
               <tr>
-                <td className="px-3 py-12 text-center text-[var(--muted)]" colSpan={6}>
+                <td className="px-3 py-12 text-center text-[var(--muted)]" colSpan={7}>
                   No boxes match this filter.
                 </td>
               </tr>
