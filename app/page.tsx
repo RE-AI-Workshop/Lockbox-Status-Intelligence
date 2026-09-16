@@ -51,7 +51,7 @@ export default function MarketPage() {
                 {fleet.open.toLocaleString()}
               </p>
               <p className="mt-2 text-xs leading-relaxed text-[var(--muted)]">
-                {fleet.autoLocked.toLocaleString()} locked on Pending or Sold
+                Active listings whose box is not locked yet
               </p>
             </div>
             <div>
