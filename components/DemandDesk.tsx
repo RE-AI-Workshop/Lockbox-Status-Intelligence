@@ -47,6 +47,8 @@ export function DemandDesk({
   );
 
   const selected = ranked.find((row) => row.zip === selectedZip) ?? null;
+  const marketRows = selected ? ranked.filter((row) => row.metro === selected.metro) : [];
+  const marketRank = selected ? marketRows.findIndex((row) => row.zip === selected.zip) + 1 : 0;
 
   useEffect(() => {
     if (!selectedZip) return;
@@ -95,7 +97,7 @@ export function DemandDesk({
                 <MetroChip>{metroLabel(selected.metro)}</MetroChip>
               </div>
               <p className="mt-1 text-sm text-[var(--muted)]">
-                Rank {selected.rank} of {ranked.length} in this market
+                Rank {marketRank} of {marketRows.length} in this market
               </p>
               <div className="mt-3 grid gap-3 sm:grid-cols-3">
                 <div>
