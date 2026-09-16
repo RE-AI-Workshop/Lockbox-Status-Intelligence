@@ -42,16 +42,11 @@ export default function ConversionsPage() {
           value={formatPercent(aggregates.showingToOfferRate)}
           hint={`${aggregates.listingsWithOffers.toLocaleString()} listings with offers / ${aggregates.listingsWithShowings.toLocaleString()} listings with showings`}
         />
-        <div className="kpi-card">
-          <p className="kicker">Offer to close</p>
-          <p className="stat mt-3 text-[2rem] leading-none text-[var(--marine)]">
-            {formatPercent(aggregates.showingToOfferRate)}
-          </p>
-          <p className="mt-3 text-xs leading-relaxed text-[var(--muted)]">
-            Series: showing-to-offer conversion · {aggregates.listingsWithOffers.toLocaleString()} listings with
-            offers
-          </p>
-        </div>
+        <KpiCard
+          label="Offer to close"
+          value={formatPercent(aggregates.offerToCloseRate)}
+          hint="Share of financed offers that closed"
+        />
         <KpiCard
           label="Median days to offer"
           value={`${Math.round(aggregates.medianDaysToOffer)}`}
