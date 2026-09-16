@@ -87,6 +87,7 @@ export function comparableListings(listing: Listing, pool: Listing[], limit = 4)
   const hi = listing.listPrice * 1.15;
   return pool
     .filter((candidate) => candidate.id !== listing.id)
+    .filter((candidate) => candidate.metro === listing.metro)
     .filter((candidate) => candidate.listPrice >= lo && candidate.listPrice <= hi)
     .sort((a, b) => Math.abs(a.listPrice - listing.listPrice) - Math.abs(b.listPrice - listing.listPrice))
     .slice(0, limit);
