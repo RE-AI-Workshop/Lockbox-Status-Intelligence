@@ -149,6 +149,18 @@ export function summarizeBoxes(listings: Listing[], policy: LockPolicy = DEFAULT
   return { total: boxes.length, autoLocked, open, shut, releases, withOffers };
 }
 
+export const BOX_FLEET_CAPTION = {
+  open: "Active listings whose box is not locked yet",
+  autoLocked: "Pending or Sold listings, so the next showing cannot open the box",
+} as const;
+
+export function boxFleetKpi<K extends keyof typeof BOX_FLEET_CAPTION>(
+  fleet: ReturnType<typeof summarizeBoxes>,
+  metric: K,
+) {
+  return { value: fleet[metric], caption: BOX_FLEET_CAPTION[metric] };
+}
+
 export function boxesByMetro(listings: Listing[], policy: LockPolicy = DEFAULT_LOCK_POLICY) {
   const groups = new Map<string, { metro: Listing["metro"]; open: number; locked: number; total: number }>();
   for (const listing of listings) {

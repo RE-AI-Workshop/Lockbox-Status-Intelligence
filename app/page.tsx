@@ -5,7 +5,7 @@ import { DemandPill, HealthMark, MetroChip, PageKicker } from "@/components/ui";
 import { aggregates, allExploreListings, watchlistListings } from "@/lib/data";
 import { formatPercent } from "@/lib/format";
 import { buyerDemand, listingHealth } from "@/lib/intelligence";
-import { boxSerial, DEFAULT_LOCK_POLICY, lockboxForListing, summarizeBoxes } from "@/lib/lockbox";
+import { boxFleetKpi, boxSerial, DEFAULT_LOCK_POLICY, lockboxForListing, summarizeBoxes } from "@/lib/lockbox";
 import { METRO_ORDER, metroLabel } from "@/lib/metros";
 import { listingPath } from "@/lib/paths";
 
@@ -14,6 +14,7 @@ export default function MarketPage() {
   const boxes = watchlist.map((listing) => lockboxForListing(listing, DEFAULT_LOCK_POLICY));
   const lockedWatch = boxes.filter((box) => box.mode === "auto-locked" || box.mode === "manual-off").length;
   const fleet = summarizeBoxes(allExploreListings());
+  const openBoxes = boxFleetKpi(fleet, "open");
 
   return (
     <div className="space-y-8">
@@ -48,10 +49,10 @@ export default function MarketPage() {
             <div>
               <p className="kicker">Boxes open</p>
               <p className="stat mt-2 text-[1.55rem] leading-none text-[var(--marine)]">
-                {fleet.open.toLocaleString()}
+                {openBoxes.value.toLocaleString()}
               </p>
               <p className="mt-2 text-xs leading-relaxed text-[var(--muted)]">
-                {fleet.autoLocked.toLocaleString()} locked on Pending or Sold
+                {openBoxes.caption}
               </p>
             </div>
             <div>

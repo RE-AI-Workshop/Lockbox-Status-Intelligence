@@ -1,11 +1,13 @@
 import { BoxesFleet } from "./BoxesFleet";
 import { PageKicker } from "@/components/ui";
 import { allExploreListings } from "@/lib/data";
-import { summarizeBoxes } from "@/lib/lockbox";
+import { boxFleetKpi, summarizeBoxes } from "@/lib/lockbox";
 
 export default function BoxesPage() {
   const listings = allExploreListings();
   const fleet = summarizeBoxes(listings);
+  const canOpen = boxFleetKpi(fleet, "open");
+  const autoLocked = boxFleetKpi(fleet, "autoLocked");
 
   return (
     <div className="space-y-6">
@@ -20,17 +22,13 @@ export default function BoxesPage() {
       <section className="grid gap-4 sm:grid-cols-2">
         <div className="kpi-card">
           <p className="kicker">Can open</p>
-          <p className="stat mt-3 text-[2rem] leading-none text-[var(--marine)]">{fleet.open.toLocaleString()}</p>
-          <p className="mt-3 text-xs leading-relaxed text-[var(--muted)]">
-            Active listings whose box is not locked yet
-          </p>
+          <p className="stat mt-3 text-[2rem] leading-none text-[var(--marine)]">{canOpen.value.toLocaleString()}</p>
+          <p className="mt-3 text-xs leading-relaxed text-[var(--muted)]">{canOpen.caption}</p>
         </div>
         <div className="kpi-card">
           <p className="kicker">Auto-locked</p>
-          <p className="stat mt-3 text-[2rem] leading-none text-[var(--marine)]">{fleet.autoLocked.toLocaleString()}</p>
-          <p className="mt-3 text-xs leading-relaxed text-[var(--muted)]">
-            Pending or Sold listings, so the next showing cannot open the box
-          </p>
+          <p className="stat mt-3 text-[2rem] leading-none text-[var(--marine)]">{autoLocked.value.toLocaleString()}</p>
+          <p className="mt-3 text-xs leading-relaxed text-[var(--muted)]">{autoLocked.caption}</p>
         </div>
       </section>
       <BoxesFleet listings={listings} />
