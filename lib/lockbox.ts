@@ -45,6 +45,17 @@ function hashString(value: string): number {
 }
 
 export function boxSerial(listing: Listing): string {
+  // Letter-coded ids (CMP1 vs SLD1) share the same trailing digit when stripped.
+  // Keep CMP* on the historic LBX-*-000n serials; re-id other letter codes (RAW-20).
+  const letterCoded = listing.id.match(/-([A-Za-z]+)(\d+)$/);
+  if (letterCoded) {
+    const [, code, num] = letterCoded;
+    const suffix = num.slice(-4).padStart(4, "0");
+    if (code.toUpperCase() === "CMP") {
+      return `LBX-${listing.metro}-${suffix}`;
+    }
+    return `LBX-${listing.metro}-${String(hashString(listing.id) % 10_000).padStart(4, "0")}`;
+  }
   const digits = listing.id.replace(/\D/g, "").slice(-4).padStart(4, "0");
   return `LBX-${listing.metro}-${digits}`;
 }
