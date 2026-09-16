@@ -1,0 +1,7 @@
+# trcli JUnit → TestRail result statuses (GET /api/v2/get_statuses).
+# Default skipped=4 is Retest. Deploy-skipped JWT / IDP_* cases must be N/A.
+case_result_statuses:
+  passed: 1
+  skipped: 6
+  error: 5
+  failure: 5

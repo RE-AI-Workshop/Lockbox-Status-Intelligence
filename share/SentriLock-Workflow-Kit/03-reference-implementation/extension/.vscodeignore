@@ -1,0 +1,8 @@
+node_modules/
+.vscode-test/
+src/
+tsconfig.json
+out/*.test.js
+out/*.test.js.map
+out/*.map
+*.vsix

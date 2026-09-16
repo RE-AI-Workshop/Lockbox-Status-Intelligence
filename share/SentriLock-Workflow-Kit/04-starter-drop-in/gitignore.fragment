@@ -1,0 +1,12 @@
+# Workflow living state and secrets (append to your .gitignore)
+.github/ai/active-brief.md
+.github/ai/active-qa-brief.md
+.github/ai/NEXT_STEP.md
+.env.local
+.vscode/mcp.json
+.cursor/mcp.json
+# Commit .cursor/commands/ so teammates get slash chips without regenerating.
+.cursor/workflow-state.json
+.cursor/workflow-pending.json
+newman-results-*.xml
+TestResults/

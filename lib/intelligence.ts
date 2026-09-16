@@ -64,9 +64,15 @@ export function daysShowingToOffer(listing: Listing): number | null {
   return Math.max(1, days);
 }
 
+function negativeShare(listing: Listing): number {
+  const rated = listing.showings.filter((showing) => showing.feedback);
+  if (rated.length === 0) return 0;
+  return rated.filter((showing) => showing.feedback === "negative").length / rated.length;
+}
+
 export function buyerDemand(listing: Listing): DemandLevel {
   const count = listing.showings.length;
-  if (count >= 12) return "High";
+  if (count >= 12 && negativeShare(listing) < 0.5) return "High";
   if (count >= 5) return "Moderate";
   return "Low";
 }
@@ -101,7 +107,9 @@ export function trafficMultipleVsComps(listing: Listing, comps: Listing[]): numb
 
 export function listingHealth(listing: Listing): "On track" | "At risk" | "Stalled" {
   if (listing.status === "Sold" || listing.status === "Pending") return "On track";
-  if (listing.showings.length >= 12 && listing.offers.length === 0) return "On track";
+  if (listing.showings.length >= 12 && listing.offers.length === 0) {
+    return negativeShare(listing) >= 0.5 ? "At risk" : "On track";
+  }
   if (listing.showings.length === 0) return "Stalled";
   return "On track";
 }

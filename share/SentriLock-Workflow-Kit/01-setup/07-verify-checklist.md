@@ -1,0 +1,23 @@
+# Verify checklist
+
+- [ ] Read `DAY-ONE-BLOCKERS.md`
+- [ ] `.github/prompts/` contains the prompt files
+- [ ] `.github/ai/PROJECT.md` exists; angle-bracket placeholders and `enabled | disabled` choices are resolved
+- [ ] `.github/copilot-instructions.md` exists and still has **Agent Handoff Standards**
+- [ ] `.github/ai/WORKFLOW.md` and `templates/TICKET_BRIEF_TEMPLATE.md` exist
+- [ ] `.github/ai/CURSOR_AGENT_MODE.md` exists (Cursor generate script requires `switch_mode` + `Never`)
+- [ ] `active-brief.md` exists (may be empty)
+- [ ] Every domain, fixture, identity, and recurring-pattern path configured in `PROJECT.md` exists
+- [ ] Ticket example/pattern match your work-item keys (`02-porting/TICKET-PREFIX.md`)
+- [ ] Unsupported optional stages are `disabled` in `PROJECT.md`
+- [ ] Extension installed; window reloaded; status bar visible
+- [ ] `npm test` in `tools/project-workflow-agent` passes (after prefix / NEXT_STEP changes, update tests too)
+- [ ] **VS Code:** Copilot `/` menu lists `intake-agent`
+- [ ] **Cursor:** command generation ran; `.cursor/commands/intake-agent.md` and Plan-safe `.cursor/commands/backend-code.md` exist
+- [ ] `/intake-agent KEY` writes a brief with Track + ACs
+- [ ] Status last: Complete is the last edit after `## Step N Summary`
+- [ ] Next chat opens (or Open Next Step works)
+- [ ] MCP can fetch one issue **or** paste fallback works
+- [ ] `.env.local` and `mcp.json` are gitignored
+- [ ] `smoke-test.sh` routes were reviewed and are safe for the configured test environment
+- [ ] Safety gates still say no commit/push/prod write without a human

@@ -1,0 +1,7 @@
+{
+  "backend-implementation": "backend-code",
+  "frontend-implementation": "frontend-code",
+  "api-execution": "api-run",
+  "workflow": "project-flow",
+  "qa-workflow": "qa-flow"
+}
