@@ -72,7 +72,6 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
       <p className="text-sm text-[var(--muted)]">
         {rows.length.toLocaleString()} listings
         {activeOnly ? " with Active only on" : ""}
-        {rows.some((listing) => listing.status === "Sold") && activeOnly ? " · Sold rows are still in this list" : ""}
       </p>
       <div className="panel overflow-auto">
         <table className="data-table">
