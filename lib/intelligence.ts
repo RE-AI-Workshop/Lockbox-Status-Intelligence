@@ -142,7 +142,6 @@ export function isActiveStatus(status: Listing["status"]): boolean {
 export function matchesQuery(listing: Listing, query: string): boolean {
   const trimmed = query.trim();
   if (!trimmed) return true;
-  if (/^\d{5}$/.test(trimmed)) return false;
   const agent = ramcoMemberForListing(listing);
   const hay = `${listing.address} ${listing.city} ${listing.zip} ${listing.mls} ${listing.id} ${boxSerial(listing)} ${agent.name} ${agent.officeName} ${agent.nrdsId}`.toLowerCase();
   return hay.includes(trimmed.toLowerCase());
