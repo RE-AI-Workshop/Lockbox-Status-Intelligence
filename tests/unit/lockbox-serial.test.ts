@@ -29,13 +29,15 @@ describe("boxSerial", () => {
     expect(boxSerial(stubListing("LST-DAL-0014"))).toBe("LBX-DAL-0014");
   });
 
-  it("gives unique serials for letter-coded Dallas comps and sold peers", () => {
-    const comps = [1, 2, 3].map((n) => boxSerial(stubListing(`LST-DAL-CMP${n}`)));
+  it("keeps Dallas comps on LBX-DAL-000n and re-ids sold peers", () => {
+    expect(boxSerial(stubListing("LST-DAL-CMP1"))).toBe("LBX-DAL-0001");
+    expect(boxSerial(stubListing("LST-DAL-CMP2"))).toBe("LBX-DAL-0002");
+    expect(boxSerial(stubListing("LST-DAL-CMP3"))).toBe("LBX-DAL-0003");
+
     const sold = [1, 2, 3].map((n) => boxSerial(stubListing(`LST-DAL-SLD${n}`)));
-    const all = [...comps, ...sold];
-    expect(new Set(all).size).toBe(all.length);
-    expect(comps[0]).not.toBe(sold[0]);
-    expect(comps[1]).not.toBe(sold[1]);
-    expect(comps[2]).not.toBe(sold[2]);
+    expect(sold[0]).not.toBe("LBX-DAL-0001");
+    expect(sold[1]).not.toBe("LBX-DAL-0002");
+    expect(sold[2]).not.toBe("LBX-DAL-0003");
+    expect(new Set(sold).size).toBe(3);
   });
 });
