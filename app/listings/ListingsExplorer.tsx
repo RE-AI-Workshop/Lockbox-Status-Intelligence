@@ -13,48 +13,31 @@ import { listingPath } from "@/lib/paths";
 import { ramcoMemberForListing } from "@/lib/ramco";
 import type { Listing, Metro } from "@/lib/types";
 
-type ListingsFilters = {
+type Filters = {
   metro: Metro | "ALL";
   query: string;
   activeOnly: boolean;
   sortDir: "asc" | "desc";
-  page: number;
 };
 
-const DEFAULT_FILTERS: ListingsFilters = {
-  metro: "ALL",
-  query: "",
-  activeOnly: false,
-  sortDir: "asc",
-  page: 1,
-};
-
-/** Survives client navigations within the tab; cleared on full page reload. */
-let memoryFilters: ListingsFilters | null = null;
-
-function readFilters(): ListingsFilters {
-  return memoryFilters ? { ...memoryFilters } : { ...DEFAULT_FILTERS };
-}
-
-function commitFilters(next: ListingsFilters): ListingsFilters {
-  memoryFilters = next;
-  return next;
-}
+/** Survives client navigations within the tab; cleared on hard refresh. */
+let memory: Filters | null = null;
 
 export function ListingsExplorer({ listings }: { listings: Listing[] }) {
-  const [filters, setFilters] = useState<ListingsFilters>(() => readFilters());
+  const [filters, setFilters] = useState<Filters>(
+    () => memory ?? { metro: "ALL", query: "", activeOnly: false, sortDir: "asc" },
+  );
+  const [page, setPage] = useState(1);
+  const { metro, query, activeOnly, sortDir } = filters;
 
-  function updateFilters(patch: Partial<ListingsFilters>, resetPage = false) {
-    setFilters((current) =>
-      commitFilters({
-        ...current,
-        ...patch,
-        page: resetPage ? 1 : (patch.page ?? current.page),
-      }),
-    );
+  function applyFilters(patch: Partial<Filters>, resetPage = true) {
+    setFilters((current) => {
+      const next = { ...current, ...patch };
+      memory = next;
+      return next;
+    });
+    if (resetPage) setPage(1);
   }
-
-  const { metro, query, activeOnly, sortDir, page } = filters;
 
   const rows = useMemo(() => {
     let next = listings.filter((listing) => (metro === "ALL" ? true : listing.metro === metro));
@@ -82,7 +65,7 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
           <select
             className="field"
             value={metro}
-            onChange={(event) => updateFilters({ metro: event.target.value as Metro | "ALL" }, true)}
+            onChange={(event) => applyFilters({ metro: event.target.value as Metro | "ALL" })}
           >
             <option value="ALL">All cities</option>
             {METRO_ORDER.map((code) => (
@@ -98,21 +81,21 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
             className="field"
             placeholder="85016"
             value={query}
-            onChange={(event) => updateFilters({ query: event.target.value }, true)}
+            onChange={(event) => applyFilters({ query: event.target.value })}
           />
         </label>
         <label className="flex h-[2.65rem] items-center gap-2 text-sm">
           <input
             type="checkbox"
             checked={activeOnly}
-            onChange={(event) => updateFilters({ activeOnly: event.target.checked }, true)}
+            onChange={(event) => applyFilters({ activeOnly: event.target.checked })}
           />
           Active only
         </label>
         <button
           type="button"
           className="h-[2.65rem] rounded-[var(--radius)] border border-[var(--line)] bg-[var(--bg-elev)] px-3 text-sm hover:border-[var(--accent)]"
-          onClick={() => updateFilters({ sortDir: sortDir === "asc" ? "desc" : "asc" })}
+          onClick={() => applyFilters({ sortDir: sortDir === "asc" ? "desc" : "asc" }, false)}
         >
           Days to offer {sortDir === "asc" ? "Asc" : "Desc"}
         </button>
@@ -194,7 +177,7 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
               type="button"
               className="h-9 rounded-[var(--radius)] border border-[var(--line)] bg-[var(--bg-elev)] px-3 text-sm hover:border-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-40"
               disabled={safePage <= 1}
-              onClick={() => updateFilters({ page: Math.max(1, safePage - 1) })}
+              onClick={() => setPage(Math.max(1, safePage - 1))}
             >
               Previous
             </button>
@@ -205,7 +188,7 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
               type="button"
               className="h-9 rounded-[var(--radius)] border border-[var(--line)] bg-[var(--bg-elev)] px-3 text-sm hover:border-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-40"
               disabled={safePage >= pageCount}
-              onClick={() => updateFilters({ page: Math.min(pageCount, safePage + 1) })}
+              onClick={() => setPage(Math.min(pageCount, safePage + 1))}
             >
               Next
             </button>
