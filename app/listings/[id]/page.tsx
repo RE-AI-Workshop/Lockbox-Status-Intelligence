@@ -13,6 +13,7 @@ import {
   comparableListings,
   daysShowingToOffer,
   listingHealth,
+  negativeShare,
   priceReductionRec,
   trafficMultipleVsComps,
   velocityPoints,
@@ -48,7 +49,7 @@ export default async function ListingDetailPage({
   );
   const negative = listing.showings.filter((showing) => showing.feedback === "negative").length;
   const feedbackTotal = listing.showings.filter((showing) => showing.feedback).length;
-  const negativeShare = feedbackTotal === 0 ? 0 : negative / feedbackTotal;
+  const share = negativeShare(listing);
   const positive = listing.showings.filter((showing) => showing.feedback === "positive").length;
   const neutral = listing.showings.filter((showing) => showing.feedback === "neutral").length;
   const activity = [
@@ -101,7 +102,7 @@ export default async function ListingDetailPage({
           </div>
           <p className="mt-2 text-sm text-[var(--muted)]">
             {listing.showings.length} {listing.showings.length === 1 ? "showing" : "showings"} ·{" "}
-            {(negativeShare * 100).toFixed(0)}% negative feedback
+            {(share * 100).toFixed(0)}% negative feedback
           </p>
           {feedbackTotal > 0 ? (
             <div className="mt-3 flex h-1.5 overflow-hidden rounded-full bg-[var(--bg-soft)]">
