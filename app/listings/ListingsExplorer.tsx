@@ -6,17 +6,38 @@ import { LiveLockBadge } from "@/components/LiveLockBadge";
 import { RamcoStatusBadge, StatusBadge } from "@/components/ui";
 import { formatCurrency } from "@/lib/format";
 import { compareDaysToOffer, daysShowingToOffer, isActiveStatus, matchesQuery } from "@/lib/intelligence";
+import { LISTINGS_PAGE_SIZE } from "@/lib/listings";
 import { boxSerial } from "@/lib/lockbox";
 import { METRO_ORDER, metroLabel } from "@/lib/metros";
 import { listingPath } from "@/lib/paths";
 import { ramcoMemberForListing } from "@/lib/ramco";
 import type { Listing, Metro } from "@/lib/types";
 
+type Filters = {
+  metro: Metro | "ALL";
+  query: string;
+  activeOnly: boolean;
+  sortDir: "asc" | "desc";
+};
+
+/** Survives client navigations within the tab; cleared on hard refresh. */
+let memory: Filters | null = null;
+
 export function ListingsExplorer({ listings }: { listings: Listing[] }) {
-  const [metro, setMetro] = useState<Metro | "ALL">("PHX");
-  const [query, setQuery] = useState("");
-  const [activeOnly, setActiveOnly] = useState(false);
-  const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
+  const [filters, setFilters] = useState<Filters>(
+    () => memory ?? { metro: "ALL", query: "", activeOnly: false, sortDir: "asc" },
+  );
+  const [page, setPage] = useState(1);
+  const { metro, query, activeOnly, sortDir } = filters;
+
+  function applyFilters(patch: Partial<Filters>, resetPage = true) {
+    setFilters((current) => {
+      const next = { ...current, ...patch };
+      memory = next;
+      return next;
+    });
+    if (resetPage) setPage(1);
+  }
 
   const rows = useMemo(() => {
     let next = listings.filter((listing) => (metro === "ALL" ? true : listing.metro === metro));
@@ -29,6 +50,13 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
     return [...next].sort((a, b) => compareDaysToOffer(a, b, sortDir));
   }, [listings, metro, query, activeOnly, sortDir]);
 
+  const pageCount = Math.max(1, Math.ceil(rows.length / LISTINGS_PAGE_SIZE));
+  const safePage = Math.min(page, pageCount);
+  const pageStart = (safePage - 1) * LISTINGS_PAGE_SIZE;
+  const pageRows = rows.slice(pageStart, pageStart + LISTINGS_PAGE_SIZE);
+  const showingFrom = rows.length === 0 ? 0 : pageStart + 1;
+  const showingTo = pageStart + pageRows.length;
+
   return (
     <div className="space-y-4">
       <div className="panel grid gap-3 p-4 sm:grid-cols-[12rem_minmax(0,1fr)_auto_auto] sm:items-end">
@@ -37,7 +65,7 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
           <select
             className="field"
             value={metro}
-            onChange={(event) => setMetro(event.target.value as Metro | "ALL")}
+            onChange={(event) => applyFilters({ metro: event.target.value as Metro | "ALL" })}
           >
             <option value="ALL">All cities</option>
             {METRO_ORDER.map((code) => (
@@ -53,17 +81,21 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
             className="field"
             placeholder="85016"
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => applyFilters({ query: event.target.value })}
           />
         </label>
         <label className="flex h-[2.65rem] items-center gap-2 text-sm">
-          <input type="checkbox" checked={activeOnly} onChange={(event) => setActiveOnly(event.target.checked)} />
+          <input
+            type="checkbox"
+            checked={activeOnly}
+            onChange={(event) => applyFilters({ activeOnly: event.target.checked })}
+          />
           Active only
         </label>
         <button
           type="button"
           className="h-[2.65rem] rounded-[var(--radius)] border border-[var(--line)] bg-[var(--bg-elev)] px-3 text-sm hover:border-[var(--accent)]"
-          onClick={() => setSortDir((dir) => (dir === "asc" ? "desc" : "asc"))}
+          onClick={() => applyFilters({ sortDir: sortDir === "asc" ? "desc" : "asc" }, false)}
         >
           Days to offer {sortDir === "asc" ? "Asc" : "Desc"}
         </button>
@@ -72,7 +104,6 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
       <p className="text-sm text-[var(--muted)]">
         {rows.length.toLocaleString()} listings
         {activeOnly ? " with Active only on" : ""}
-        {rows.some((listing) => listing.status === "Sold") && activeOnly ? " · Sold rows are still in this list" : ""}
       </p>
       <div className="panel overflow-auto">
         <table className="data-table">
@@ -88,7 +119,7 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
             </tr>
           </thead>
           <tbody>
-            {rows.slice(0, 80).map((listing) => {
+            {pageRows.map((listing) => {
               const agent = ramcoMemberForListing(listing);
               return (
                 <tr key={listing.id}>
@@ -134,9 +165,36 @@ export function ListingsExplorer({ listings }: { listings: Listing[] }) {
           </tbody>
         </table>
       </div>
-      <p className="text-xs text-[var(--muted)]">
-        Showing {Math.min(rows.length, 80)} of {rows.length} in this city.
-      </p>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="text-xs text-[var(--muted)]">
+          {rows.length === 0
+            ? "Showing 0 of 0 in this city."
+            : `Showing ${showingFrom}–${showingTo} of ${rows.length} in this city.`}
+        </p>
+        {pageCount > 1 ? (
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              className="h-9 rounded-[var(--radius)] border border-[var(--line)] bg-[var(--bg-elev)] px-3 text-sm hover:border-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-40"
+              disabled={safePage <= 1}
+              onClick={() => setPage(Math.max(1, safePage - 1))}
+            >
+              Previous
+            </button>
+            <span className="tabular text-xs text-[var(--muted)]">
+              Page {safePage} of {pageCount}
+            </span>
+            <button
+              type="button"
+              className="h-9 rounded-[var(--radius)] border border-[var(--line)] bg-[var(--bg-elev)] px-3 text-sm hover:border-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-40"
+              disabled={safePage >= pageCount}
+              onClick={() => setPage(Math.min(pageCount, safePage + 1))}
+            >
+              Next
+            </button>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

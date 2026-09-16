@@ -136,7 +136,7 @@ export function anonymousPeers(listing: Listing, pool: Listing[], limit = 5) {
 }
 
 export function isActiveStatus(status: Listing["status"]): boolean {
-  return status !== "Withdrawn";
+  return status === "Active";
 }
 
 export function matchesQuery(listing: Listing, query: string): boolean {
@@ -154,8 +154,8 @@ export function compareDaysToOffer(a: Listing, b: Listing, direction: "asc" | "d
   if (da == null && db == null) return 0;
   if (da == null) return 1;
   if (db == null) return -1;
-  if (direction === "asc") return db - da;
-  return da - db;
+  if (direction === "asc") return da - db;
+  return db - da;
 }
 
 export function mapIntensity(score: number, maxScore: number, minScore = 0): number {
