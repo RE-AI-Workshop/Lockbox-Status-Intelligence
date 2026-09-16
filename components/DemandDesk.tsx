@@ -30,11 +30,14 @@ export function DemandDesk({
     [maxScore, minScore, rows],
   );
 
-  const visible = metroFilter === "ALL" ? ranked : ranked.filter((row) => row.metro === metroFilter);
+  const visible = useMemo(
+    () => (metroFilter === "ALL" ? ranked : ranked.filter((row) => row.metro === metroFilter)),
+    [metroFilter, ranked],
+  );
 
   const mapPoints: DemandMapPoint[] = useMemo(
     () =>
-      ranked.map((row) => ({
+      visible.map((row) => ({
         zip: row.zip,
         metro: row.metro,
         lat: row.lat,
@@ -43,7 +46,7 @@ export function DemandDesk({
         score: row.score,
         rank: row.rank,
       })),
-    [ranked],
+    [visible],
   );
 
   const selected = ranked.find((row) => row.zip === selectedZip) ?? null;
@@ -175,9 +178,7 @@ export function DemandDesk({
             <div>
               <h2 className="section-title">Map</h2>
               <p className="mt-1 text-sm text-[var(--muted)]">
-                {mapPoints.length} ZIPs on this map
-                {metroFilter !== "ALL" ? ` · table is filtered to ${visible.length}` : ""}. Click a ZIP. Drag or
-                scroll to move.
+                {mapPoints.length} ZIPs on this map. Click a ZIP. Drag or scroll to move.
               </p>
             </div>
             <div className="flex items-center gap-3 text-xs text-[var(--muted)]">

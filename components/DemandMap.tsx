@@ -209,12 +209,14 @@ export function DemandMap({
   );
 
   const metroHeat = useMemo(() => {
-    return (Object.keys(METROS) as Metro[]).map((metro) => {
-      const group = projected.filter((point) => point.metro === metro);
-      const center = project(METROS[metro].lat, METROS[metro].lng);
-      const peak = group.reduce((max, point) => Math.max(max, point.intensity), 0);
-      return { metro, ...center, peak, count: group.length };
-    });
+    return (Object.keys(METROS) as Metro[])
+      .map((metro) => {
+        const group = projected.filter((point) => point.metro === metro);
+        const center = project(METROS[metro].lat, METROS[metro].lng);
+        const peak = group.reduce((max, point) => Math.max(max, point.intensity), 0);
+        return { metro, ...center, peak, count: group.length };
+      })
+      .filter((metro) => metro.count > 0);
   }, [projected]);
 
   useEffect(() => {
