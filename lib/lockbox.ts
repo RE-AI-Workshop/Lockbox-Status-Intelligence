@@ -45,7 +45,12 @@ function hashString(value: string): number {
 }
 
 export function boxSerial(listing: Listing): string {
-  const digits = listing.id.replace(/\D/g, "").slice(-4).padStart(4, "0");
+  // Numeric tails (LST-CLT-0088) keep their digits. Letter-coded ids (CMP1 vs SLD1)
+  // strip to the same digit, so derive a unique suffix from the full id instead.
+  const numericTail = listing.id.match(/-(\d+)$/);
+  const digits = numericTail
+    ? numericTail[1].slice(-4).padStart(4, "0")
+    : String(hashString(listing.id) % 10_000).padStart(4, "0");
   return `LBX-${listing.metro}-${digits}`;
 }
 
