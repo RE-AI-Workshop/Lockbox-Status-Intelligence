@@ -140,7 +140,7 @@ export default function MarketPage() {
             {[
               "Phoenix and Atlanta are getting the most showings right now.",
               "Most offers show up in the first three weeks. After day 30, a price cut is usually what moves the home.",
-              "Cash deals close faster here, but most accepted offers are still financed.",
+              "Most accepted offers here are financed, not cash.",
             ].map((copy, index) => (
               <li key={copy} className="flex gap-4 text-sm leading-relaxed text-[var(--muted)]">
                 <span className="stat text-[var(--accent-deep)]">0{index + 1}</span>
